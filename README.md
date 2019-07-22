@@ -1,3 +1,23 @@
+A link (URL) to your published App
+A link to your GitHub repository
+Ensure the repo is accessible by your Educators
+Description of your project, including,
+Problem definition / purpose
+Functionality / features
+Screenshots
+Tech stack (e.g. html, css, deployment platform, etc)
+Instructions on how to setup, configure and use your App.
+Design documentation including,
+Design process
+User stories
+A workflow diagram of the user journey/s.
+Wireframes
+Database Entity Relationship Diagrams
+Details of planning process including,
+Project plan & timeline
+Screenshots of Trello board(s)
+Answers to the Short Answer questions (Section 2.2)
+
 What is the need (i.e. challenge) that you will be addressing in your project?
 Identify the problem you’re trying to solve by building this particular marketplace App? Why is it a problem that needs solving?
 Describe the project will you be conducting and how. your App will address the needs.
