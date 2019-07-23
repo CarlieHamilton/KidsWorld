@@ -27,4 +27,4 @@
 /config/master.key
 
 # ignore database.yml for conflicting settings
-config/database.yml
+/config/database.yml

@@ -10,6 +10,10 @@
 - Design documentation including,
 - Design process
 - User stories
+
+![user stories](docs/userstories.png)
+US7 nice to have
+
 - A workflow diagram of the user journey/s.
 - Wireframes
 - Database Entity Relationship Diagrams
