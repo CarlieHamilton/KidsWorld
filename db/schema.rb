@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_23_051356) do
+ActiveRecord::Schema.define(version: 2019_07_23_063101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "items", force: :cascade do |t|
+    t.bigint "seller_id"
+    t.string "title", limit: 100
+    t.string "description", limit: 250
+    t.string "condition", limit: 50
+    t.string "category", limit: 50
+    t.boolean "sold", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["seller_id"], name: "index_items_on_seller_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +39,5 @@ ActiveRecord::Schema.define(version: 2019_07_23_051356) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "items", "users", column: "seller_id"
 end
