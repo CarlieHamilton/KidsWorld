@@ -13,3 +13,4 @@ user3 = User.create(email: "aa3@example.com", password: "123testing", password_c
 user4 = User.create(email: "aa4@example.com", password: "123testing", password_confirmation: "123testing")
 user5 = User.create(email: "aa5@example.com", password: "123testing", password_confirmation: "123testing")
 
+# walker = Item.create(seller_id: user1.id, title: "Baby Walker", description: "blah", condition: :brand_new, category: :toys, sold: false)
