@@ -23,8 +23,13 @@ US7 nice to have
 - Wireframes
 - Database Entity Relationship Diagrams
 - Details of planning process including,
-- Project plan & timeline
-- Screenshots of Trello board(s)
+
+### Project Planning and Timeline
+
+#### Trello
+Day 2 - July 23 Trello Board
+![ Trello 23rd July ]( /docs/trello23july.png )
+
 - Answers to the Short Answer questions (Section 2.2)
 -
 - What is the need (i.e. challenge) that you will be addressing in your project?
