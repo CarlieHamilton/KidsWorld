@@ -1,6 +1,11 @@
 - A link (URL) to your published App
+https://kidsworld.herokuapp.com/
+
+
 - A link to your GitHub repository
-- Ensure the repo is accessible by your Educators
+https://github.com/BlueCodeThree/KidsWorld
+
+
 - Description of your project, including,
 - Problem definition / purpose
 - Functionality / features
