@@ -1,0 +1,25 @@
+
+===================================
+Wed 24 Jul 15:17:11 AEST 2019
+===================================
+
+
+ItemsController
+  GET #index
+    returns a success response
+
+Items
+  GET /items
+    gets items path
+
+ItemsController
+  routing
+    routes to #index
+
+items/index
+  renders a list of items
+
+Finished in 0.18503 seconds (files took 0.86697 seconds to load)
+4 examples, 0 failures
+
+
