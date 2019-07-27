@@ -1,2 +1,16 @@
-<h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+<h2 class="title"><%= @item.title%></h2>
+<p class="subtitle"><strong>Seller:</strong> <%= @item.seller.username %></p>
+
+<div class="item">
+    <div class="item-div">
+        <p><%= image_tag @item.photo, width:300 %></p>
+    </div>
+
+    <div class="item-div">
+        <p><strong>Description:</strong> <%= @item.description%></p>
+        <p><strong>Condition:</strong> <%= @item.condition %></p>
+        <p><strong>Category:</strong> <%= @item.category %></p>
+        <p><strong>Price:</strong> <%= @item.price %></p>
+        <p class="button is-primary">Purchase</p>
+    </div>
+</div>

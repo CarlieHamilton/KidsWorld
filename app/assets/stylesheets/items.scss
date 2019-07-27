@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.toys {
+.items {
     display: grid;
     justify-items: center;
     grid-template-columns: repeat(3 1fr);
@@ -13,4 +13,12 @@
         "pic pic pic"
         "pic pic pic"
         "pic pic pic"
+}
+
+.item {
+    display: flex;
+}
+
+.item-div {
+    padding: 10px;
 }

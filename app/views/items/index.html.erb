@@ -1,20 +1,16 @@
-<h1>Kids World</h1>
-<p>Adding colours to life</p>
-
-<h2>Toys</h2>
-<p>Product List</p>
+<h2 class="title">All Items</h2>
 
 
-
-<div class ="toys">
+<div class ="items">
 <% @items.each do |item| %>
     <div>
-    <p><%= item.title%></p>
-    <p>$ price here</p>
+        <p><% if item.photo %><%# image_tag item.photo, width:150 %><%end%></p>
+    <p><%= link_to item.title, item_path(item) %></p>
+    <p>$<%= item.price%></p>
     </div>
 <% end%>
 
-    <div>
+   <!-- <div>
         <%= image_tag "1.jpg", width:150 %>
         <p>Baby Walker</p>
         <p>Price : $6</p>
@@ -70,7 +66,7 @@
 </div>
 
 
-
+-->
 
 
 
