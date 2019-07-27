@@ -4,7 +4,7 @@
 <div class ="items">
 <% @items.each do |item| %>
     <div>
-        <p><% if item.photo %><%# image_tag item.photo, width:150 %><%end%></p>
+        <p><% if item.photo %><%= image_tag item.photo, width:150 %><%end%></p>
     <p><%= link_to item.title, item_path(item) %></p>
     <p>$<%= item.price%></p>
     </div>
