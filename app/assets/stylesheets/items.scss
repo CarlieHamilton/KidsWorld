@@ -12,7 +12,7 @@
         "pic pic pic"
         "pic pic pic"
         "pic pic pic"
-        "pic pic pic"
+        "pic pic pic";
 }
 
 .item {
@@ -20,5 +20,13 @@
 }
 
 .item-div {
-    padding: 10px;
+    padding: 20px;
+}
+
+.items-image {
+    height: 150px;
+}
+
+.item-image {
+    max-height: 300px;
 }

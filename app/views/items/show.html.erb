@@ -1,16 +1,16 @@
-<h2 class="title"><%= @item.title%></h2>
-<p class="subtitle"><strong>Seller:</strong> <%= @item.seller.username %></p>
+<h2 class="title has-text-centered"><%= @item.title%></h2>
+<p class="subtitle has-text-centered"><strong>Seller:</strong> <%= @item.seller.username %></p>
 
 <div class="item">
     <div class="item-div">
-        <p><%= image_tag @item.photo, width:300 %></p>
+        <p><%= image_tag @item.photo, class: "item-image" %></p>
     </div>
 
     <div class="item-div">
         <p><strong>Description:</strong> <%= @item.description%></p>
         <p><strong>Condition:</strong> <%= @item.condition %></p>
         <p><strong>Category:</strong> <%= @item.category %></p>
-        <p><strong>Price:</strong> <%= @item.price %></p>
+        <p><strong>Price:</strong> <%= number_to_currency(@item.price) %></p>
         <p class="button is-primary">Purchase</p>
     </div>
 </div>
