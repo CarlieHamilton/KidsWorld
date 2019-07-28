@@ -1,2 +1,16 @@
 <h1 class="title has-text-centered">Kids World</h1>
 <p class="subtitle has-text-centered">Adding Colours To Life</p>
+
+<h2 class="title is-small">Latest items for sale</h2>
+<div class ="items">
+<% @items.each do |item| %>
+    <div class="item-div">
+        <p><%= link_to image_tag(item.photo, class: "items-image"), item_path(item)%></p>
+        <p><%= link_to item.title, item_path(item) %></p>
+        <p><%= number_to_currency(item.price)%></p>
+        <p class="button is-primary">buy now</p>
+    </div>
+<% end%>
+</div>
+
+<%= link_to 'More', items_path, class: "button is-link is-pulled-right" %>
