@@ -4,6 +4,7 @@ class Item < ApplicationRecord
   enum category: [:toys, :books, :clothes, :accessories]
   enum condition: [:used, :brand_new]
 
+  # show all items that have not yet been sold
   def self.all_items_unsold
     items = Item.where(sold: false)
   end

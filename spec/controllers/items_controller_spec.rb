@@ -28,8 +28,12 @@ RSpec.describe ItemsController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # Item. As you add validations to Item, be sure to
   # adjust the attributes here as well.
+  let(:seller_attributes) {
+    { email: "aa1@example.com", password: "123testing1", password_confirmation: "123testing1", username: "alice" }
+  }
+
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {seller_id: Seller.first.id, title: "title", description: "description", condition: :brand_new, category: :toys, sold: false, price: 25.00}
   }
 
   let(:invalid_attributes) {
