@@ -31,7 +31,26 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item
+    @item = Item.find(params[:id])
   end
+
+  def update
+    item = Item.find(params[:id])
+    item.title = params[:item][:title]
+    item.description = params[:item][:description]
+    item.condition = params[:condition]
+    item.category = params[:item][:category]
+    item.price = params[:item][:price]
+    item.photo.attach(params[:item][:photo])
+
+    if item.save
+        redirect_to root_path
+    else
+        flash[:alert] = item.errors.full_messages[0]
+        redirect_to edit_item_path
+    end
+
+  end
+
 
 end

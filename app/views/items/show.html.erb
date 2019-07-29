@@ -12,5 +12,9 @@
         <p><strong>Category:</strong> <%= @item.category %></p>
         <p><strong>Price:</strong> <%= number_to_currency(@item.price) %></p>
         <p class="button is-primary">Purchase</p>
+        <%# <p class="button is-primary">Edit </p>  %>
+
+        <%= link_to "Edit", edit_item_path(id: @item.id) %>
+        
     </div>
 </div>

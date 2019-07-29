@@ -14,6 +14,4 @@ class Item < ApplicationRecord
     item.save
     return item
   end
-
-
 end
