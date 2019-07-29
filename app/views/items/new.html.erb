@@ -1,2 +1,39 @@
-<h1>Items#new</h1>
-<p>Find me in app/views/items/new.html.erb</p>
+<h1>Add a new item</h1>
+
+<%= form_with model: @item, local:true do |form|%>
+<div>
+    <%= form.label :title %>
+    <%= form.text_field :title, required:true, minlength: 1%>
+</div>
+
+<div>
+    <%= form.label :description %>
+    <%= form.text_area :description, required:true, minlength: 1%>
+</div>
+
+<div>
+    <%= form.label :condition %>
+    <%= select_tag :condition, options_for_select(Item.conditions) %>
+</div>
+
+<div>
+    <%= form.label :category %>
+    <%= select_tag :category, options_for_select(Item.categories)%>
+</div>
+
+<div>
+    <%= form.label :price %>
+    <%= form.number_field :price %>
+</div>
+
+<div>
+    <%= form.label :photo %>
+    <%= form.file_field :photo %>
+</div>
+
+
+<%= form.submit "Submit" %>
+
+<%end%>
+
+
