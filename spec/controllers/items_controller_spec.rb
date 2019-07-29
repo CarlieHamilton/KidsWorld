@@ -33,7 +33,7 @@ RSpec.describe ItemsController, type: :controller do
   }
 
   let(:valid_attributes) {
-    {seller_id: Seller.first.id, title: "title", description: "description", condition: :brand_new, category: :toys, sold: false, price: 25.00}
+    {seller_id: User.first.id, title: "title", description: "description", condition: :brand_new, category: :toys, sold: false, price: 25.00}
   }
 
   let(:invalid_attributes) {
@@ -51,13 +51,14 @@ RSpec.describe ItemsController, type: :controller do
     end
   end
 
-  # describe "GET #show" do
-  #   it "returns a success response" do
-  #     item = Item.create! valid_attributes
-  #     get :show, params: {id: item.to_param}, session: valid_session
-  #     expect(response).to be_successful
-  #   end
-  # end
+  describe "GET #show" do
+    it "returns a success response" do
+      User.create! seller_attributes
+      item = Item.create! valid_attributes
+      get :show, params: {id: item.to_param}, session: valid_session
+      expect(response).to be_successful
+    end
+  end
 
   # describe "GET #new" do
   #   it "returns a success response" do
