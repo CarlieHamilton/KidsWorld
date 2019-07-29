@@ -1,6 +1,6 @@
 #!/bin/bash
 ​
-TEST_LOG="log/test_results.txt"
+TEST_LOG="log/test_results.log"
 ​
 ​
 echo | tee -a $TEST_LOG
