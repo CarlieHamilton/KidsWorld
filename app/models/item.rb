@@ -6,7 +6,7 @@ class Item < ApplicationRecord
 
   # show all items that have not yet been sold
   def self.all_items_unsold
-    items = Item.where(sold: false)
+    items = Item.where(sold: false).reverse_order
   end
 
   def self.create_item(current_user,title, description, condition, category, price)
