@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   patch "items/:id/edit", to: "items#update"
   put "items/:id/edit", to: "items#update"
   get 'items/:id', to: "items#show", as: "item"
+  delete "items/:id", to: "items#destroy"
 
   root to: "homepage#index"
   devise_for :user

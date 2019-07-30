@@ -51,7 +51,17 @@ class ItemsController < ApplicationController
         flash[:alert] = item.errors.full_messages[0]
         redirect_to edit_item_path
     end
+  end
 
+  def destroy
+    item = Item.find(params[:id])
+    if item.seller_id == current_user.id
+        Item.where(id: params[:id]).first.destroy
+        redirect_to items_path
+    else
+        flash[:notice] = "You cannot delete this item"
+        redirect_to item_path
+    end
   end
 
 

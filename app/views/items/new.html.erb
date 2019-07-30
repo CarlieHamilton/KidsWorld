@@ -18,7 +18,7 @@
 
 <div>
     <%= form.label :category %>
-    <%= select_tag :category, options_for_select(Item.categories.map { |key, value| [key.humanize, key] }), {prompt: "Select Condition of Item"}    %>
+    <%= select_tag :category, options_for_select(Item.categories.map { |key, value| [key.humanize, key] }), {prompt: "Select Condition of Item"} %>
 </div>
 
 <div>

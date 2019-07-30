@@ -20,7 +20,7 @@
 
         <div>
             <%= form.label :category %>
-            <%= select_tag :category, options_for_select(Item.categories.map { |key, value| [key.humanize, key] }), {prompt: "Select Type of Item"}%>
+            <%= select_tag :category, options_for_select(Item.categories.map { |key, value| [key.humanize, key] }), {prompt: "Select Type of Item" }%>
         </div>
 
         <div>

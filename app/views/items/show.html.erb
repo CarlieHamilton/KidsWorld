@@ -16,9 +16,13 @@
         <p><strong>Category:</strong> <%= @item.category %></p>
         <p><strong>Price:</strong> <%= number_to_currency(@item.price) %></p>
         <p class="button is-primary">Purchase</p>
-        <%# <p class="button is-primary">Edit </p>  %>
+        <% if user_signed_in?%>
+            <% if @item.seller_id == current_user.id%>
+                <%= link_to "Edit", edit_item_path(id: @item.id), class: "button is-primary" %>
+                <%= link_to "Delete", @item, method: "delete", class: "button is-primary" %>
+            <% end %>
+        <% end %>
 
-        <%= link_to "Edit", edit_item_path(id: @item.id) %>
         
     </div>
 </div>
