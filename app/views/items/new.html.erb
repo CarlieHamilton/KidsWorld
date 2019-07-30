@@ -13,17 +13,17 @@
 
 <div>
     <%= form.label :condition %>
-    <%= select_tag :condition, options_for_select(Item.conditions) %>
+    <%= select_tag :condition, options_for_select(Item.conditions.map { |key, value| [key.humanize, key] }), {prompt: "Select Condition of Item"} %>
 </div>
 
 <div>
     <%= form.label :category %>
-    <%= select_tag :category, options_for_select(Item.categories)%>
+    <%= select_tag :category, options_for_select(Item.categories.map { |key, value| [key.humanize, key] }), {prompt: "Select Condition of Item"}    %>
 </div>
 
 <div>
     <%= form.label :price %>
-    <%= form.number_field :price %>
+    <%= form.number_field :price, step: :any %>
 </div>
 
 <div>

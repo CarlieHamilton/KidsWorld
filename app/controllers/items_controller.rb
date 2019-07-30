@@ -23,7 +23,8 @@ class ItemsController < ApplicationController
     item.photo.attach(params[:item][:photo])
 
     if item.save
-        redirect_to root_path
+        flash[:notice] = "Your item has been saved!"
+        redirect_to item_path(item.id)
     else
         flash[:alert] = item.errors.full_messages[0]
         redirect_to new_item_path
@@ -44,7 +45,8 @@ class ItemsController < ApplicationController
     item.photo.attach(params[:item][:photo])
 
     if item.save
-        redirect_to root_path
+        flash[:notice] = "Your item has been saved!"
+        redirect_to item_path(item.id)
     else
         flash[:alert] = item.errors.full_messages[0]
         redirect_to edit_item_path
