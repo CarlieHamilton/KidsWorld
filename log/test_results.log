@@ -131,3 +131,77 @@ Finished in 0.33335 seconds (files took 0.88931 seconds to load)
 6 examples, 0 failures
 
 
+
+===================================
+Tue 30 Jul 20:53:52 AEST 2019
+===================================
+
+
+ItemsController
+  GET #index
+    returns a success response
+  GET #show
+    returns a success response
+
+Items
+  GET /items
+    gets items path
+
+ItemsController
+  routing
+    routes to #index
+    routes to #new
+    routes to #show
+    routes to #edit
+    routes to #create
+    routes to #update via PUT (FAILED - 1)
+    routes to #update via PATCH (FAILED - 2)
+    routes to #destroy
+
+items/edit
+  renders the edit item form (FAILED - 3)
+
+items/index
+  renders a list of items
+
+items/new
+  renders new item form
+
+items/show
+  renders attributes in <p>
+
+Failures:
+
+  1) ItemsController routing routes to #update via PUT
+     Failure/Error: expect(:put => "/items/1").to route_to("items#update", :id => "1")
+       No route matches "/items/1"
+     # ./spec/routing/items_routing_spec.rb:27:in `block (3 levels) in <main>'
+
+  2) ItemsController routing routes to #update via PATCH
+     Failure/Error: expect(:patch => "/items/1").to route_to("items#update", :id => "1")
+       No route matches "/items/1"
+     # ./spec/routing/items_routing_spec.rb:31:in `block (3 levels) in <main>'
+
+  3) items/edit renders the edit item form
+     Failure/Error: <%= form_with model: @item, url: edit_item_path, local: true do |form| %>
+
+     ActionView::Template::Error:
+       No route matches {:action=>"edit", :controller=>"items"}, missing required keys: [:id]
+     # ./app/views/items/edit.html.erb:4:in `_app_views_items_edit_html_erb__2456088360390991927_47290025443620'
+     # ./spec/views/items/edit.html.erb_spec.rb:11:in `block (2 levels) in <main>'
+     # ------------------
+     # --- Caused by: ---
+     # ActionController::UrlGenerationError:
+     #   No route matches {:action=>"edit", :controller=>"items"}, missing required keys: [:id]
+     #   ./app/views/items/edit.html.erb:4:in `_app_views_items_edit_html_erb__2456088360390991927_47290025443620'
+
+Finished in 0.35542 seconds (files took 0.92923 seconds to load)
+15 examples, 3 failures
+
+Failed examples:
+
+rspec ./spec/routing/items_routing_spec.rb:26 # ItemsController routing routes to #update via PUT
+rspec ./spec/routing/items_routing_spec.rb:30 # ItemsController routing routes to #update via PATCH
+rspec ./spec/views/items/edit.html.erb_spec.rb:10 # items/edit renders the edit item form
+
+

@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :destroy]
 
   def index
     @items = Item.all_items_unsold
