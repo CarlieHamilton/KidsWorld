@@ -13,5 +13,7 @@ Rails.application.routes.draw do
   root to: "homepage#index"
   devise_for :user
 
+  #seller
+  get 'seller/:seller_id', to: "seller#index", as: "seller"
 
 end
