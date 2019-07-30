@@ -1,5 +1,5 @@
 <h2 class="title has-text-centered"><%= @item.title%></h2>
-<p class="subtitle has-text-centered"><strong>Seller:</strong> <%= @item.seller.username %></p>
+<p class="subtitle has-text-centered"><strong>Seller:</strong> <%= link_to @item.seller.username, seller_path(@item.seller.id) %></p>
 
 <div class="item">
     <div class="item-div">
@@ -23,6 +23,6 @@
             <% end %>
         <% end %>
 
-        
+
     </div>
 </div>
