@@ -17,8 +17,8 @@ class ItemsController < ApplicationController
     item.seller_id = current_user.id
     item.title = params[:item][:title]
     item.description = params[:item][:description]
-    item.condition = params[:item][:condition]
-    item.category = params[:item][:category]
+    item.condition = params[:condition]
+    item.category = params[:category]
     item.price = params[:item][:price]
     item.photo.attach(params[:item][:photo])
 
@@ -40,9 +40,11 @@ class ItemsController < ApplicationController
     item.title = params[:item][:title]
     item.description = params[:item][:description]
     item.condition = params[:condition]
-    item.category = params[:item][:category]
+    item.category = params[:category]
     item.price = params[:item][:price]
-    item.photo.attach(params[:item][:photo])
+    if params[:item].has_key? :photo
+        item.photo.attach(params[:item][:photo])
+    end
 
     if item.save
         flash[:notice] = "Your item has been saved!"

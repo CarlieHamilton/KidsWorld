@@ -1,7 +1,7 @@
 <h1>Edit</h1>
 
 <div id="edit-form">
-    <%= form_with model: @item, url: edit_item_path do |form| %>
+    <%= form_with model: @item, url: edit_item_path, local: true do |form| %>
         <%= form.hidden_field "item_id", value: @item.id %>
         <div>
             <%= form.label :title %>
@@ -15,12 +15,12 @@
 
         <div>
             <%= form.label :condition %>
-            <%= select_tag :condition, options_for_select(Item.conditions.map { |key, value| [key.humanize, key] }), {prompt: "Select Condition of Item"} %>
+            <%= select_tag :condition, options_for_select(Item.conditions.map { |key, value| [key.humanize, key] }, selected: @item.condition), {prompt: "Select Condition of Item"} %>
         </div>
 
         <div>
             <%= form.label :category %>
-            <%= select_tag :category, options_for_select(Item.categories.map { |key, value| [key.humanize, key] }), {prompt: "Select Type of Item" }%>
+            <%= select_tag :category, options_for_select(Item.categories.map { |key, value| [key.humanize, key] }, selected: @item.category), {prompt: "Select Type of Item" }%>
         </div>
 
         <div>
