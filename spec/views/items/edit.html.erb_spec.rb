@@ -1,14 +1,16 @@
-# require 'rails_helper'
+require 'rails_helper'
 
-# RSpec.describe "items/edit", type: :view do
-#   before(:each) do
-#     @item = assign(:item, Item.create!())
-#   end
+RSpec.describe "items/edit", type: :view do
+  before(:each) do
+    @user = User.create!(email: "aa1@example.com", password: "123testing1", password_confirmation: "123testing1", username: "alice")
+    sign_in(@user)
+    @item = assign(:item, Item.create!(seller_id: @user.id))
+  end
 
-#   it "renders the edit item form" do
-#     render
+  it "renders the edit item form" do
+    render
 
-#     assert_select "form[action=?][method=?]", item_path(@item), "post" do
-#     end
-#   end
-# end
+    assert_select "form[action=?][method=?]", item_path(@user.id, @item.id), "post" do
+    end
+  end
+end
