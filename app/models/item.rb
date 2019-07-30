@@ -14,4 +14,8 @@ class Item < ApplicationRecord
     item.save
     return item
   end
+
+  def self.items_from_seller(seller)
+    items = Item.where(seller_id: seller)
+  end
 end
