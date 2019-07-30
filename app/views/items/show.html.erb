@@ -3,7 +3,11 @@
 
 <div class="item">
     <div class="item-div">
-        <p><%= image_tag @item.photo, class: "item-image" %></p>
+            <p>
+        <% if @item.photo.attachment %>
+        <%= image_tag @item.photo, class: "item-image" %>
+        <%end%>
+        </p>
     </div>
 
     <div class="item-div">
@@ -12,5 +16,13 @@
         <p><strong>Category:</strong> <%= @item.category %></p>
         <p><strong>Price:</strong> <%= number_to_currency(@item.price) %></p>
         <p class="button is-primary">Purchase</p>
+        <% if user_signed_in?%>
+            <% if @item.seller_id == current_user.id%>
+                <%= link_to "Edit", edit_item_path(id: @item.id), class: "button is-primary" %>
+                <%= link_to "Delete", @item, method: "delete", class: "button is-primary" %>
+            <% end %>
+        <% end %>
+
+        
     </div>
 </div>

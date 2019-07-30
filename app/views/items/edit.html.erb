@@ -1,2 +1,40 @@
-<h1>Items#edit</h1>
-<p>Find me in app/views/items/edit.html.erb</p>
+<h1>Edit</h1>
+
+<div id="edit-form">
+    <%= form_with model: @item, url: edit_item_path, local: true do |form| %>
+        <%= form.hidden_field "item_id", value: @item.id %>
+        <div>
+            <%= form.label :title %>
+            <%= form.text_field :title, required:true, minlength: 1%>
+        </div>
+
+        <div>
+            <%= form.label :description %>
+            <%= form.text_area :description, required:true, minlength: 1%>
+        </div>
+
+        <div>
+            <%= form.label :condition %>
+            <%= select_tag :condition, options_for_select(Item.conditions.map { |key, value| [key.humanize, key] }, selected: @item.condition), {prompt: "Select Condition of Item"} %>
+        </div>
+
+        <div>
+            <%= form.label :category %>
+            <%= select_tag :category, options_for_select(Item.categories.map { |key, value| [key.humanize, key] }, selected: @item.category), {prompt: "Select Type of Item" }%>
+        </div>
+
+        <div>
+            <%= form.label :price %>
+            <%= form.number_field :price, step: :any %>
+        </div>
+
+        <div>
+            <%= form.label :photo %>
+            <%= form.file_field :photo %>
+        </div>
+
+        <%= form.submit "Submit" %>
+        <%= link_to "Cancel", :back %>
+    <% end %>
+</div>
+

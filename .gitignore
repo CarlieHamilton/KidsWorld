@@ -10,7 +10,6 @@
 # Ignore all logfiles and tempfiles.
 /log/development.log
 /log/test.log
-/log/test_results.log
 /log/.keep
 /tmp/*
 !/log/.keep
