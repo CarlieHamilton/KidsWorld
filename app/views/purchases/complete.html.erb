@@ -1,0 +1,22 @@
+<h2 class="title">Order Complete!</h2>
+
+<p><%= @item.seller.username %> will be in contact shortly for pickup details</p>
+
+<p><strong>Your Order Details:</strong></p>
+<table class="table">
+<thead class="thead">
+<tr>
+<th>Item</th>
+<th>Description</th>
+<th>Price</th>
+</tr>
+</thead>
+<tbody class="tbody">
+<tr class="tr">
+<td class="td"><%= @item.title %></td>
+<td class="td"><%= @item.description %></td>
+<td class="td"><%= number_to_currency @item.price %></td>
+</tr>
+</tbody>
+</table>
+
