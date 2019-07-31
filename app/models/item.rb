@@ -4,6 +4,11 @@ class Item < ApplicationRecord
   enum category: [:toys, :books, :clothes, :accessories]
   enum condition: [:used, :brand_new]
 
+  validates :title, presence: true, length: { maximum: 100 }
+  validates :description, presence: true, length: { maximum: 250 }
+  validates :price, numericality: true
+
+
   # show all items that have not yet been sold
   def self.all_items_unsold
     items = Item.where(sold: false).reverse_order
