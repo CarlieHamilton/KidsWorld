@@ -66,5 +66,16 @@ class ItemsController < ApplicationController
     end
   end
 
+  def toys
+    @items = Item.all_toys
+  end
+
+  def books
+    @items = Item.all_books
+  end
+
+  def accessories
+    @items = Item.all_accessories
+  end
 
 end

@@ -18,4 +18,16 @@ class Item < ApplicationRecord
   def self.items_from_seller(seller)
     items = Item.where(seller_id: seller)
   end
+
+  def self.all_toys
+    items = Item.where(category: "toys")
+  end
+
+  def self.all_books
+    items = Item.where(category: "books")
+  end
+
+  def self.all_accessories
+    items = Item.where(category: "accessories")
+  end
 end

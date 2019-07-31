@@ -1,0 +1,12 @@
+<h1 class="title has-text-centered">Accessories</h1>
+
+<div class ="items">
+<% @items.each do |item| %>
+        <div class="item-div">
+            <p><%= link_to image_tag(item.photo, class: "items-image"), item_path(item)%></p>
+            <p><%= link_to item.title, item_path(item) %></p>
+            <p><%= number_to_currency(item.price)%></p>
+            <p class="button is-primary">Buy Now</p>
+        </div>
+<%end%>
+</div>
