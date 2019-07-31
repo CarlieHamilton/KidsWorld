@@ -1,0 +1,36 @@
+class PurchasesController < ApplicationController
+  def new
+    @item = Item.find(params[:id])
+
+    Stripe.api_key =  "sk_test_fWxPnsRBz1gfYsM62iINNutV00t4xReAiJ"
+    @session = Stripe::Checkout::Session.create(
+    payment_method_types: ['card'],
+    line_items: [{
+    name: @item.title,
+    description: @item.description,
+    images: [],
+    amount: (@item.price * 100).to_i,
+    currency: 'aud',
+    quantity: 1,
+    }],
+    success_url: completed_purchase_url(@item.id),
+    cancel_url: 'http://localhost:3000/purchases/cancel',
+    )
+  end
+
+  def complete
+    @item = Item.find(params[:id])
+    @item.sold = true
+    @item.save
+  end
+
+  private
+
+  def checkout_images(item)
+    if item.photo.attached?
+      return [url_for(item.photo)]
+    else
+      return []
+    end
+  end
+end
