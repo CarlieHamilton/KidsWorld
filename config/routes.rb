@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   #seller
   get 'seller/:seller_id', to: "seller#index", as: "seller"
 
+  #purchases
+  get 'purchases/new', to: "purchases#new", as: "new_purchase"
+
 end

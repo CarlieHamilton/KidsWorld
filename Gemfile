@@ -66,3 +66,4 @@ gem "bulma-rails", "~> 0.7.5"
 gem "devise", "~> 4.6"
 gem 'cloudinary', require: false
 gem 'activestorage-cloudinary-service'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
