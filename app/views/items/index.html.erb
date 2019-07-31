@@ -1,73 +1,18 @@
 <h2 class="title has-text-centered">All Items</h2>
 
 <div class ="items">
-<% @items.each do |item| %>
-    <div class="item-div">
-        <p>
-        <% if item.photo.attachment %>
-        <%= link_to image_tag(item.photo, class: "items-image"), item_path(item)%>
-        <%end%>
-        </p>
-        <p><%= link_to item.title, item_path(item) %></p>
-        <p><%= number_to_currency(item.price)%></p>
-        <p><%= link_to 'Buy Now', new_purchase_path(id: item.id), class: "button is-primary" %></p>
-    </div>
-<% end%>
-
-   <!-- <div>
-        <%= image_tag "1.jpg", width:150 %>
-        <p>Baby Walker</p>
-        <p>Price : $6</p>
-    </div>
-
-    <div>
-        <%= image_tag "2.jpg", width:150 %>
-        <p>Escavator</p>
-        <p>Price : $5</p>
-    </div>
-
-    <div>
-        <%= image_tag "3.jpg", width:150 %>
-        <p>Unicorn Squishy</p>
-        <p>Price : $2</p>
-    </div>
-
-    <div>
-        <%= image_tag "4.jpg", width:150 %>
-        <p>Duck</p>
-        <p>Price : $3</p>
-    </div>
-
-    <div>
-        <%= image_tag "5.jpg", width:150 %>
-        <p>Soft Toy - Dog</p>
-        <p>Price : $4</p>
-    </div>
-
-    <div>
-        <%= image_tag "6.jpg", width:150 %>
-        <p>Tool Set</p>
-        <p>Price : $5</p>
-    </div>
-
-    <div>
-        <%= image_tag "7.jpg", width:150 %>
-        <p>Stacking Rings</p>
-        <p>Price : $3</p>
-    </div>
-
-    <div>
-        <%= image_tag "8.jpg", width:150 %>
-        <p>Swinging Dog</p>
-        <p>Price : $4</p>
-    </div>
-
-    <div>
-        <%= image_tag "9.jpg", width:150 %>
-        <p>Kitchen Set</p>
-        <p>Price : $8</p>
-    </div>
-    -->
+    <% @items.each do |item| %>
+        <div class="item-div">
+            <p>
+            <% if item.photo.attachment %>
+            <%= link_to image_tag(item.photo, class: "items-image"), item_path(item)%>
+            <%end%>
+            </p>
+            <p><%= link_to item.title, item_path(item) %></p>
+            <p><%= number_to_currency(item.price)%></p>
+            <p class="button is-primary">Buy Now</p>
+        </div>
+    <% end%>
 </div>
 
 
