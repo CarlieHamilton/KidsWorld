@@ -8,12 +8,12 @@ Rails.application.routes.draw do
   get 'items/books', to: "items#books", as: "books"
   get 'items/accessories', to: "items#accessories", as: "accessories"
   get 'items/:id/edit', to: "items#edit", as: "edit_item"
-  patch "items/:id/edit", to: "items#update"
-  put "items/:id/edit", to: "items#update"
+  patch "items/:id/", to: "items#update"
+  put "items/:id/", to: "items#update"
   get 'items/:id', to: "items#show", as: "item"
   delete "items/:id", to: "items#destroy"
-  
-  
+
+
 
   root to: "homepage#index"
   devise_for :user

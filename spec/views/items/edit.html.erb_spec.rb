@@ -9,8 +9,7 @@ RSpec.describe "items/edit", type: :view do
 
   it "renders the edit item form" do
     render
-
-    assert_select "form[action=?][method=?]", item_path(@user.id, @item.id), "post" do
+    assert_select "form[action=?][method=?]", item_path(@item), "post" do
     end
   end
 end
