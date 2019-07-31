@@ -8,14 +8,20 @@ class PurchasesController < ApplicationController
     line_items: [{
     name: @item.title,
     description: @item.description,
-    images: checkout_images(@item),
+    images: [],
     amount: (@item.price * 100).to_i,
     currency: 'aud',
     quantity: 1,
     }],
-    success_url: 'http://localhost:3000/purchases/complete',
+    success_url: completed_purchase_url(@item.id),
     cancel_url: 'http://localhost:3000/purchases/cancel',
     )
+  end
+
+  def complete
+    @item = Item.find(params[:id])
+    @item.sold = true
+    @item.save
   end
 
   private
