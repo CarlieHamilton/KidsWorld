@@ -13,3 +13,8 @@
 <div class="level-item">
     <%= link_to "Accessories", accessories_path %>
 </div>
+ <% if user_signed_in? %>
+<div class="level-item">
+    <%= link_to 'Sell a New Item', new_item_path, class: "button is-success is-outlined" %>
+</div>
+ <% end %>

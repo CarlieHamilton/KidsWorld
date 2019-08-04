@@ -41,6 +41,9 @@ A user would need to log in to be able to buy an item.
 - A user can view the details of an individual item
 - A user can see a list of their past purchases (stretch goal)
 - A user can see a list of their sold items (stretch goal)
+- A user can sort all the listings (by price, most recent, by category -- stretch goal)
+
+We have implemented being able to select a category, as a part of our main menu. 
 
 - A workflow diagram of the user journey/s.
 - Wireframes
@@ -104,6 +107,8 @@ Rspec
 to run, `rspec -f d`
 Write a new feature, write a new test. Test driven development.
 Save it to a log
+
+Tests defined for all user stories **
 
 - Discuss and analyse requirements related to information system security.
 - Discuss methods you will use to protect information and data.

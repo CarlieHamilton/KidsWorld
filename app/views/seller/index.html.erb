@@ -1,4 +1,7 @@
+<%# I had to use @items.length > 0 because a user (with no items) has a blank active record. If I just put `if @items`, ruby thinks this is true %>
+<% if @items.length > 0%>
 <h2 class="title has-text-centered">Items for sale from <%= @user.username %></h2>
+
 <div class ="items">
 <% @items.each do |item| %>
     <div class="item-div">
@@ -13,3 +16,7 @@
     </div>
 <% end%>
 </div>
+
+<%else%>
+    <h3 class="title has-text-centered"><%=@user.username%> currently has no items for sale</h3>
+<%end%>
