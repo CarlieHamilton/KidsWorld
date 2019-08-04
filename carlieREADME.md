@@ -44,7 +44,7 @@ A user would only be able to edit and delete their own listings.
 - A user can view the details of an individual item
 - A user can see a list of their past purchases (stretch goal)
 
-As a stretch goal, we would have to implement a "Purchases" model
+Goal completed. A user can view their past purchases. We implemented a Purchases model to record who purchased what item.
 
 - A user can see a list of their sold items (stretch goal)
 
@@ -58,8 +58,19 @@ We have implemented being able to select a category, as a part of our main menu.
 
 We envision this will be so that users can contact other users through the website to organise pickup or delivery. At the moment, users get access to the person's email address which is not ideal.
 
-- A workflow diagram of the user journey/s.
-- Wireframes
+### A workflow diagram of the user journey/s.
+### Wireframes
+
+#### Mobile
+
+#### Desktop
+![desktop wireframe homepage](docs/wireframe-homepage.png)
+![desktop wireframe listing](docs/wireframe-listing.png)
+![desktop wireframe product description](docs/wireframeproddesc.png)
+
+#### Tablet
+
+
 - Database Entity Relationship Diagrams
 - Details of planning process including,
 
