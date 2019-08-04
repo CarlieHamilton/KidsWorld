@@ -29,16 +29,16 @@ class Item < ApplicationRecord
 
   # showing the caterory toys
   def self.all_toys
-    items = Item.where(category: "toys").reverse_order
+    items = Item.where(category: "toys", sold: false).reverse_order
   end
 
   # showing the caterory books
   def self.all_books
-    items = Item.where(category: "books").reverse_order
+    items = Item.where(category: "books", sold: false).reverse_order
   end
 
   # showing the caterory accessories
   def self.all_accessories
-    items = Item.where(category: "accessories").reverse_order
+    items = Item.where(category: "accessories" ,sold: false).reverse_order
   end
 end

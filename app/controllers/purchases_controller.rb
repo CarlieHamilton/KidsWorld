@@ -22,6 +22,8 @@ class PurchasesController < ApplicationController
     @item = Item.find(params[:id])
     @item.sold = true
     @item.save
+    @sold_item = Purchase.new(buyer_id: current_user.id, item_id: @item.id)
+    @sold_item.save
   end
 
   private
