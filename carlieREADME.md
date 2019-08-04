@@ -43,6 +43,9 @@ A user would only be able to edit and delete their own listings.
 - A user can log in and out
 - A user can view the details of an individual item
 - A user can see a list of their past purchases (stretch goal)
+
+As a stretch goal, we would have to implement a "Purchases" model
+
 - A user can see a list of their sold items (stretch goal)
 - A user can sort all the listings (by price, most recent, by category -- stretch goal)
 

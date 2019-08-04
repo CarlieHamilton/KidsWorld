@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   devise_for :user
 
   #seller
+  get 'seller/:seller_id/sold', to: "seller#sold", as: "sold_items"
   get 'seller/:seller_id', to: "seller#index", as: "seller"
 
   #purchases

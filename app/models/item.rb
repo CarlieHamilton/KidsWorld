@@ -19,7 +19,12 @@ class Item < ApplicationRecord
 
   # shows the seller's items
   def self.items_from_seller(seller)
-    items = Item.where(seller_id: seller)
+    items = Item.where(seller_id: seller, sold: false).reverse_order
+  end
+
+  # show a seller's sold items
+  def self.items_seller_has_sold(seller)
+    items = Item.where(seller_id: seller, sold: true).reverse_order
   end
 
   # showing the caterory toys
