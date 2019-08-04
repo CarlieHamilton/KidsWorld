@@ -59,16 +59,16 @@ We have implemented being able to select a category, as a part of our main menu.
 We envision this will be so that users can contact other users through the website to organise pickup or delivery. At the moment, users get access to the person's email address which is not ideal.
 
 ### A workflow diagram of the user journey/s.
-### Wireframes
+## Wireframes
 
-#### Mobile
+### Mobile
 
-#### Desktop
+### Desktop
 ![desktop wireframe homepage](docs/wireframe-homepage.png)
 ![desktop wireframe listing](docs/wireframe-listing.png)
 ![desktop wireframe product description](docs/wireframeproddesc.png)
 
-#### Tablet
+### Tablet
 
 
 - Database Entity Relationship Diagrams
@@ -113,12 +113,20 @@ Data structure of Etsy?
 - Provide User stories for your App.
 - Provide Wireframes for your App.
 - Describe the way tasks are allocated and tracked in your project.
-- Discuss how Agile methodology is being implemented in your project.
 
-Scrum, stand up - did yesterday/today/any obstacles
-feature driven development
-test driven development
-deploying early, changing requirements if necessary
+## Discuss how Agile methodology is being implemented in your project.
+
+Although we were only a team of two, we implemented numerous agile methodologies in our workflow.
+
+We broke down our user stories, and then integrated them into tasks on our trello kanban board (see the trello screenshot section).
+
+We worked closely together, often utilizing pair programming, and we marked this time off on our trello boards as both working on the task. We also worked in daily sprints, utilising our trello board to track these sprints.
+
+We participated in the classroom-wide stand up, which meant that we also together went through what we did the previous day, our goal for that day's sprint, and any obstacles that we were facing.
+
+Our coding focused on feature driven development, aligning with our user stories, and we used [unit testing](https://github.com/BlueCodeThree/KidsWorld/blob/testing/log/test_results.log) to test our implementation.
+
+We deployed early and often to Heroku, changing our requirements for the project if necessary.
 
 
 - Provide an overview and description of your Source control process.
