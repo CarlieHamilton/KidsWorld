@@ -24,18 +24,21 @@ A two-sided marketplace where people can buy and sell kids products, such as toy
 
 ## User stories
 
-We created a list of user stories that we needed to complete for our MVP, with two user stories as a stretch goal. They are as follows:
+We created a list of user stories that we needed to complete for our MVP, as well as user stories as stretch goals. They are as follows:
 
 - A user can view all items available for sale
 
 Sold items would not be viewable so that they do not confuse the buyer. A user would not have to be logged in to see all the items.
 
 - A user can buy an item
-
-A user would need to log in to be able to buy an item.
-
 - A user can sell an item (create a listing)
-- A user can edit and delete a listing (only their own listing)
+
+A user can only create a listing if they are signed in.
+
+- A user can edit and delete a listing
+
+A user would only be able to edit and delete their own listings.
+
 - A user can upload an image to their listing
 - A user can log in and out
 - A user can view the details of an individual item

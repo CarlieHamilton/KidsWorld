@@ -5,29 +5,35 @@ class Item < ApplicationRecord
   enum condition: [:used, :brand_new]
 
   # show all items that have not yet been sold
+  # reverse order to show the newest items first
   def self.all_items_unsold
     items = Item.where(sold: false).reverse_order
   end
 
+  # creating a new item
   def self.create_item(current_user,title, description, condition, category, price)
     item = Item.new(seller_id = current_user, title = title, description = description, condition = condition, category = category, price = price)
     item.save
     return item
   end
 
+  # shows the seller's items
   def self.items_from_seller(seller)
     items = Item.where(seller_id: seller)
   end
 
+  # showing the caterory toys
   def self.all_toys
-    items = Item.where(category: "toys")
+    items = Item.where(category: "toys").reverse_order
   end
 
+  # showing the caterory books
   def self.all_books
-    items = Item.where(category: "books")
+    items = Item.where(category: "books").reverse_order
   end
 
+  # showing the caterory accessories
   def self.all_accessories
-    items = Item.where(category: "accessories")
+    items = Item.where(category: "accessories").reverse_order
   end
 end
