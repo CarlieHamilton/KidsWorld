@@ -17,7 +17,13 @@ Your order
 </tr>
 </tbody>
 </table>
-<button id="pay-now" class="button is-primary">Checkout now</button>
+
+ <% if user_signed_in? %>
+    <button id="pay-now" class="button is-primary">Checkout now</button>
+<%else%>
+    <%# if user is not signed in, the button redirects to the login page%>
+    <%= link_to 'Checkout now', new_user_session_path, class: "button is-primary" %>
+<%end%>
 
 <script src="https://js.stripe.com/v3/"></script>
 

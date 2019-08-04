@@ -43,7 +43,7 @@ A user would need to log in to be able to buy an item.
 - A user can see a list of their sold items (stretch goal)
 - A user can sort all the listings (by price, most recent, by category -- stretch goal)
 
-We have implemented being able to select a category, as a part of our main menu. 
+We have implemented being able to select a category, as a part of our main menu. Sorting by most recent is the default view. In the future we would implement being able to sort by price, and other ways of sorting.
 
 - A workflow diagram of the user journey/s.
 - Wireframes
