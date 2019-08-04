@@ -27,6 +27,10 @@ class Item < ApplicationRecord
     items = Item.where(seller_id: seller, sold: true).reverse_order
   end
 
+  def self.items_buyer_has_purchased(buyer)
+    # items = Item.where() need to do a join table
+  end
+
   # showing the caterory toys
   def self.all_toys
     items = Item.where(category: "toys", sold: false).reverse_order

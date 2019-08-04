@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'buyer/bought'
   #items
   get 'items/', to: "items#index", as: "items"
   post 'items/', to: "items#create"
@@ -21,6 +22,9 @@ Rails.application.routes.draw do
   #seller
   get 'seller/:seller_id/sold', to: "seller#sold", as: "sold_items"
   get 'seller/:seller_id', to: "seller#index", as: "seller"
+
+  #buyer
+  get 'buyer/:buyer_id', to: "buyer#purchased", as "purchased_items"
 
   #purchases
   get 'purchases/new', to: "purchases#new", as: "new_purchase"

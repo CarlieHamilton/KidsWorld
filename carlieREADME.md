@@ -47,9 +47,16 @@ A user would only be able to edit and delete their own listings.
 As a stretch goal, we would have to implement a "Purchases" model
 
 - A user can see a list of their sold items (stretch goal)
+
+Goal completed. A user can see their sold items, who purchased them, and the person's contact email
+
 - A user can sort all the listings (by price, most recent, by category -- stretch goal)
 
 We have implemented being able to select a category, as a part of our main menu. Sorting by most recent is the default view. In the future we would implement being able to sort by price, and other ways of sorting.
+
+- A user can message another user (stretch goal)
+
+We envision this will be so that users can contact other users through the website to organise pickup or delivery. At the moment, users get access to the person's email address which is not ideal.
 
 - A workflow diagram of the user journey/s.
 - Wireframes
