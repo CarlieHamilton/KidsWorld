@@ -24,10 +24,11 @@ Rails.application.routes.draw do
   get 'seller/:seller_id', to: "seller#index", as: "seller"
 
   #buyer
-  get 'buyer/:buyer_id', to: "buyer#purchased", as "purchased_items"
+  get 'buyer/:buyer_id', to: "buyer#purchased", as: "purchased_items"
 
   #purchases
   get 'purchases/new', to: "purchases#new", as: "new_purchase"
   get 'purchases/complete/:id', to: "purchases#complete", as: "completed_purchase"
+  get 'purchases/receipt/:id', to: "purchases#receipt", as: "purchase_receipt"
 
 end

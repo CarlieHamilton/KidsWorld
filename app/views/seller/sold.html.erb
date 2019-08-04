@@ -1,9 +1,11 @@
+ <%= render "shared/usermenu"%>
+
 <%# I had to use @items.length > 0 because a user (with no items) has a blank active record. If I just put `if @items`, ruby thinks this is true %>
 <% if @items.length > 0%>
 <h2 class="title">Sold Items from <%= current_user.username %></h2>
 
 
-    <%= link_to 'See your items for sale', seller_path(current_user), class: "button is-info" %>
+
 
 
 <div class ="items">

@@ -1,6 +1,6 @@
-<h2 class="title">Order Complete!</h2>
+ <%= render "shared/usermenu"%>
 
-<p><%= @item.seller.username %> (<%= @item.seller.email %>) will be in contact shortly for pickup details</p>
+<h2 class="title">Receipt for <%= @item.title %></h2>
 
 <p><strong>Your Order Details:</strong></p>
 <table class="table">
@@ -9,6 +9,8 @@
 <th>Item</th>
 <th>Description</th>
 <th>Price</th>
+<th>Seller</th>
+<th>Seller's Email</th>
 </tr>
 </thead>
 <tbody class="tbody">
@@ -16,6 +18,8 @@
 <td class="td"><%= @item.title %></td>
 <td class="td"><%= @item.description %></td>
 <td class="td"><%= number_to_currency @item.price %></td>
+<td class="td"><%= @item.seller.username %> </td>
+<td class="td"><%= @item.seller.email %></td>
 </tr>
 </tbody>
 </table>
