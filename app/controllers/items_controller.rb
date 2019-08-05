@@ -7,6 +7,9 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    # if @item.sold == true
+    #   @purchase = Purchase.purchased_item(params[:id])
+    # end
   end
 
   def new

@@ -1,16 +1,32 @@
-# Kids World
+# Kid's World
 
 - Deployed website - [kidsworld.heroku.com]( https://kidsworld.herokuapp.com/ )
 - Github repository - [kidsworld github repository]( https://github.com/BlueCodeThree/KidsWorld )
 
 A two-sided marketplace where people can buy and sell kids products, such as toys, clothes and more.
 
-- Description of your project, including,
-- Problem definition / purpose
-- Functionality / features
-- Screenshots
-- Tech stack (e.g. html, css, deployment platform, etc)
+## Our Problem and Purpose
+
+When it comes to babies and children, often they need many items that only get used for a short amount of time - they outgrow or lose interest in things quickly. Parents may rather pay a little bit less for second hand items, and also want to sell off items that are no longer being used. Our Kid's World application is a place where people can buy and sell their new or used children's items.
+
+## Functionality and Features
+
+The aim of our website is to buy and sell children's items. The main functionality when arriving at the website is the user is able to browse the items that are available for sale. In the top menu, a user can select a category to view. In a future implementation, the user will be able to sort the items by price or by condition (new, used etc), for example.
+
+In a future implementation we also plan to add pagination to our all items and category pages, so that the user is not presented with all of the items on a single page. This will allow for faster loading times, and will mean that the user isn't overloaded with too much choice.
+
+A user can purchase any of the items, but when they go to checkout the user must be logged in, in order to pay for the item. We decided that only one item can be purchased at a time, so that our users do not get confused as to the location/the seller of each item.
+
+We decided that with the payment of the item, the postage would be included in the price or the buyer and seller could negotiate pickup/delivery. This is similar to how the website [gumtree](https://www.gumtree.com.au/), an Australian classified marketplace works.
+
+Once a user has signed up or logged in, a user can be either (or both) a seller and a buyer. A user can add an item to be sold. A user can see another user's items for sale in their own sale page. A user can see all the items that have been sold, and all the items that they have purchased.
+
+## Screenshots
+
+## Tech stack (e.g. html, css, deployment platform, etc)
+
 ## Instructions on how to setup, configure and use your App.
+
 - fork and clone
 - bundle install
 - update database.yml
@@ -57,6 +73,10 @@ We have implemented being able to select a category, as a part of our main menu.
 - A user can message another user (stretch goal)
 
 We envision this will be so that users can contact other users through the website to organise pickup or delivery. At the moment, users get access to the person's email address which is not ideal.
+
+- A user can post an item (stretch goal)
+
+For this we would need to implement a new model that stores a user's address, as well as perhaps a postage model that has the different postage rates for items (this could possibly exist as a gem). In the item model we may need to include a place where a user inputs the weight of an item. There may also be a boolean for if the user wants to send and item or it to be pickup/delivery only (such as, if the item is too large to easily send). Postage would then have to be added to every order, and when the order is complete the seller would have access to the buyer's postage address.
 
 ### A workflow diagram of the user journey/s.
 ## Wireframes
