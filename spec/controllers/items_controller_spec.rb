@@ -37,7 +37,7 @@ RSpec.describe ItemsController, type: :controller do
   }
 
   let(:invalid_attributes) {
-    {price: "hello"}
+    {category: "hello"}
   }
 
   # This should return the minimal set of values that should be in the session
@@ -62,6 +62,8 @@ RSpec.describe ItemsController, type: :controller do
 
   describe "GET #new" do
     it "returns a success response" do
+      user = User.create! seller_attributes
+      sign_in(user)
       get :new, params: {}, session: valid_session
       expect(response).to be_successful
     end
@@ -134,7 +136,7 @@ RSpec.describe ItemsController, type: :controller do
         sign_in(user)
         item = Item.create! valid_attributes
         put :update, params: {id: item.to_param, item: invalid_attributes}, session: valid_session
-        expect(response).to be_successful
+        expect(response).to redirect_to(edit_item_path)
       end
     end
   end
