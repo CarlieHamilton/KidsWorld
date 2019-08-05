@@ -79,8 +79,22 @@ a1.photo.attach(io: File.open('app/assets/images/accessories/1.jpg'), filename: 
 a2 = Item.create(seller_id: user2.id, title: "Portable Sleeping Tent", description: "Sleeping tent to keep away from insects", condition: :brand_new, category: :accessories, sold: false, price: 2.00)
 a2.photo.attach(io: File.open('app/assets/images/accessories/2.jpg'), filename: '2.jpg')
 
-a3 = Item.create(seller_id: user3.id, title: "Knitted Ugg", description: "Keeps cozy and warm", condition: :used, category: :accessories, sold: false, price: 3.50)
-a3.photo.attach(io: File.open('app/assets/images/accessories/3.jpg'), filename: '3.jpg')
+a3 = Item.create(seller_id: user3.id, title: "Hair Ties", description: "Pretty roses hair ties", condition: :used, category: :accessories, sold: false, price: 3.50)
+a3.photo.attach(io: File.open('app/assets/images/accessories/3.jpg'), filename: '3.jpeg')
 
 a4 = Item.create(seller_id: user1.id, title: "Sleeping mat bundle", description: "Ideal for a new born", condition: :brand_new, category: :accessories, sold: false, price: 5.65)
 a4.photo.attach(io: File.open('app/assets/images/accessories/4.jpeg'), filename: '4.jpeg')
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#List of Clothes
+
+c1 = Item.create(seller_id: user1.id, title: "Frock", description: "Floral print for the little girl - Size 5", condition: :used, category: :clothes, sold: false, price: 4.50)
+c1.photo.attach(io: File.open('app/assets/images/clothes/1.jpg'), filename: '1.jpg')
+
+c2 = Item.create(seller_id: user2.id, title: "Frock", description: "One sleeve frock with headband - Size 3", condition: :brand_new, category: :clothes, sold: false, price: 2.00)
+c2.photo.attach(io: File.open('app/assets/images/clothes/2.jpg'), filename: '2.jpg')
+
+c3 = Item.create(seller_id: user3.id, title: "Shirt", description: "Denim Shirt - Size 4", condition: :used, category: :clothes, sold: false, price: 3.50)
+c3.photo.attach(io: File.open('app/assets/images/clothes/3.jpg'), filename: '3.jpg')
+
+c4 = Item.create(seller_id: user1.id, title: "Jeans", description: "Size 4", condition: :brand_new, category: :clothes, sold: false, price: 5.65)
+c4.photo.attach(io: File.open('app/assets/images/clothes/4.jpg'), filename: '4.jpg')

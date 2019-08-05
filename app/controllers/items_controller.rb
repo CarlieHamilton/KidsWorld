@@ -75,6 +75,10 @@ class ItemsController < ApplicationController
     @items = Item.all_books
   end
 
+  def clothes
+    @items = Item.all_clothes
+  end
+
   def accessories
     @items = Item.all_accessories
   end

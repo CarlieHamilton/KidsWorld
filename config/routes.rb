@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'items/new', to: "items#new", as: "new_item"
   get 'items/toys', to: "items#toys", as: "toys"
   get 'items/books', to: "items#books", as: "books"
+  get 'items/clothes', to: "items#clothes", as: "clothes"
   get 'items/accessories', to: "items#accessories", as: "accessories"
   get 'items/:id/edit', to: "items#edit", as: "edit_item"
   patch "items/:id/", to: "items#update"
