@@ -5,7 +5,7 @@
 
 A two-sided marketplace where people can buy and sell kids products, such as toys, clothes and more.
 
-## Our Problem and Purpose
+## Problem and Purpose
 
 When it comes to babies and children, often they need many items that only get used for a short amount of time - they outgrow or lose interest in things quickly. Parents may rather pay a little bit less for second hand items, and also want to sell off items that are no longer being used. Our Kid's World application is a place where people can buy and sell their new or used children's items.
 
