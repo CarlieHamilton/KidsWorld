@@ -19,9 +19,12 @@ class PurchasesController < ApplicationController
   end
 
   def complete
+    #changes the item to sold
     @item = Item.find(params[:id])
     @item.sold = true
     @item.save
+
+    #creates a new item in the purchases table
     @sold_item = Purchase.new(buyer_id: current_user.id, item_id: @item.id)
     @sold_item.save
   end
