@@ -109,7 +109,10 @@ For this we would need to implement a new model that stores a user's address, as
 ### Tablet
 
 
-- Database Entity Relationship Diagrams
+## Database Entity Relationship Diagrams
+
+![ERD](docs/ERD.png)
+
 - Details of planning process including,
 
 ### Project Planning and Timeline
