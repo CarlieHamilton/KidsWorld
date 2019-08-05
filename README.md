@@ -190,9 +190,11 @@ We deployed early and often to Heroku, changing our requirements for the project
 
 - Provide an overview and description of your Source control process.
 
-Github, feature branch, pull request.
+Source control is the process of tracking code changes, able to view the revision history of the code, and be able to rollback to previous versions when needed.
+The source code management system that we used is Git. We created a git repository for our app. We have the master branch and created feature branches using the command 'git checkout -b branch-name' to work on our code independently. Once we have finished our code changes on a particular branch, we used the commands 'git add' and 'git commit' to store our changes locally. We then used 'git push origin branch-name' to push our local changes to the feature branch in the git repository. The other teammate could then pull down the branch using a pull request, review and test the code change, then accept/decline the changes, leave comments and push/merge it to the master branch if everything works fine. We have faced some merge conflicts and figured out what changes needs to be accpeted and have resolved the conflicts. We have worked independently on feature branches and have done frequent commits to the master so that its easy to manage and does not break the functionality.
 
-### Provide an overview and description of your Testing process.
+
+- Provide an overview and description of your Testing process.
 
 
 

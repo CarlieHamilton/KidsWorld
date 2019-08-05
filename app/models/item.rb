@@ -37,6 +37,11 @@ class Item < ApplicationRecord
     items = Item.where(category: "books", sold: false).reverse_order
   end
 
+   # showing the caterory clothes
+   def self.all_clothes
+    items = Item.where(category: "clothes" ,sold: false).reverse_order
+  end
+
   # showing the caterory accessories
   def self.all_accessories
     items = Item.where(category: "accessories" ,sold: false).reverse_order
