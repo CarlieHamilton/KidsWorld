@@ -26,7 +26,8 @@
             <% end %>
         <%else%>
             <p><strong>Sold:</strong> <%= @item.updated_at.to_date%></p>
-            <%#<p><strong>Purchased by:</strong> <%= @purchase.buyer.username%>
+            <p><strong>Purchased by:</strong> <%= @purchase.buyer.username%></p>
+            <p><strong>Purchaser contact email:</strong> <%= @purchase.buyer.email%></p>
         <%end%>
 
 
