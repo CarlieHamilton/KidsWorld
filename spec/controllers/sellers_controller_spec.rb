@@ -55,5 +55,14 @@ RSpec.describe SellerController, type: :controller do
     end
   end
 
+    describe "GET #sold" do
+    it "returns a success response" do
+      seller = User.create! seller_attributes
+      item = Item.create! item_attributes
+      get :index, params: {seller_id: seller.to_param}, session: valid_session
+      expect(response).to be_successful
+    end
+  end
+
 
 end

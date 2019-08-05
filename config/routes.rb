@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'buyer/bought'
   #items
   get 'items/', to: "items#index", as: "items"
   post 'items/', to: "items#create"

@@ -101,7 +101,7 @@ RSpec.describe ItemsController, type: :controller do
         user = User.create! seller_attributes
         sign_in(user)
         post :create, params: {item: invalid_attributes}, session: valid_session
-        expect(response).to be_successful
+        expect(response).to redirect_to(new_item_path)
       end
     end
   end
