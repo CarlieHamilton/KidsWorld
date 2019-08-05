@@ -36,13 +36,4 @@ class PurchasesController < ApplicationController
     @user = current_user
   end
 
-  private
-
-  def checkout_images(item)
-    if item.photo.attached?
-      return [url_for(item.photo)]
-    else
-      return []
-    end
-  end
 end
