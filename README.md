@@ -19,11 +19,29 @@ A user can purchase any of the items, but when they go to checkout the user must
 
 We decided that with the payment of the item, the postage would be included in the price or the buyer and seller could negotiate pickup/delivery. This is similar to how the website [gumtree](https://www.gumtree.com.au/), an Australian classified marketplace works.
 
-Once a user has signed up or logged in, a user can be either (or both) a seller and a buyer. A user can add an item to be sold. A user can see another user's items for sale in their own sale page. A user can see all the items that have been sold, and all the items that they have purchased.
+Once a user has signed up or logged in, a user can be either (or both) a seller and a buyer.
+
+A user can add an item to be sold. The user can upload an image to their sales listing.
+
+A user can see another user's items for sale in their each user's own sale page. In addition to that, a user can see all the items that have been sold (only their own items that have been sold), and all the items that they have purchased (only their own purchases).
+
+It a future implementation, we would have a messaging system so that users can contact other users to ask questions and communicate with the other users.
 
 ## Screenshots
 
 ## Tech stack (e.g. html, css, deployment platform, etc)
+
+Our tech stack includes:
+
+- Ruby on Rails
+- HTML
+- SCSS
+- Postgresql
+- Heroku for deployment
+- Cloudinary for image storage in production
+- Stripe for payment processing
+- Git/Github for source control
+- Rspec for unit testing
 
 ## Instructions on how to setup, configure and use your App.
 
