@@ -19,4 +19,24 @@ RSpec.describe PurchasesController, type: :controller do
     end
   end
 
+  describe "GET #complete" do
+    it "returns http success" do
+      user = User.create! seller_attributes
+      sign_in(user)
+      item = Item.create! valid_attributes
+      get :complete, params: {id: item.to_param}
+      expect(response).to have_http_status(:success)
+    end
+  end
+
+    describe "GET #receipt" do
+    it "returns http success" do
+      user = User.create! seller_attributes
+      sign_in(user)
+      item = Item.create! valid_attributes
+      get :complete, params: {id: item.to_param}
+      expect(response).to have_http_status(:success)
+    end
+  end
+
 end

@@ -7,4 +7,8 @@ class Purchase < ApplicationRecord
     purchases = Purchase.where(buyer_id: buyer).reverse_order
   end
 
+  def self.purchased_item(item_id)
+    purchase = Purchase.where(item_id: item_id)
+  end
+
 end

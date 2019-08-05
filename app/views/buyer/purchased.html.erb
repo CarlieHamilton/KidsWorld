@@ -16,8 +16,8 @@
         <p><%= link_to i.item.title, purchase_receipt_path(i.item.id) %></p>
         <p><%= number_to_currency(i.item.price)%></p>
         <p><strong>Purchased:</strong> <%= i.created_at.to_date%></p>
-        <p><strong>Owner:</strong> <% i.item.seller.username %></p>
-        <p><strong>Owner's Email:</strong> <% i.item.seller.email %></p>
+        <p><strong>Seller:</strong> <%= i.item.seller.username %></p>
+        <p><strong>Seller's Email:</strong> <%= i.item.seller.email %></p>
     </div>
 <% end%>
 </div>
