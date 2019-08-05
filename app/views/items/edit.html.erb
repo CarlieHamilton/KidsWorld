@@ -1,7 +1,7 @@
 <h1>Edit</h1>
 
 <div id="edit-form">
-    <%= form_with model: @item, url: edit_item_path, local: true do |form| %>
+    <%= form_with model: @item, url: item_path(@item), local: true do |form| %>
         <%= form.hidden_field "item_id", value: @item.id %>
         <div>
             <%= form.label :title %>

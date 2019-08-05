@@ -1,19 +1,15 @@
 require 'rails_helper'
 
-RSpec.describe "sellers/index", type: :view do
+RSpec.describe "seller/index", type: :view do
   before(:each) do
-    assign(:sellers, [
-      Seller.create!(
-        :index => "Index"
-      ),
-      Seller.create!(
-        :index => "Index"
-      )
+ @user = User.create!(email: "aa1@example.com", password: "123testing1", password_confirmation: "123testing1", username: "alice")
+    assign(:items, [
+      Item.create!(seller_id: @user.id),
+      Item.create!(seller_id: @user.id)
     ])
   end
 
-  it "renders a list of sellers" do
+  it "renders a list of items" do
     render
-    assert_select "tr>td", :text => "Index".to_s, :count => 2
   end
 end

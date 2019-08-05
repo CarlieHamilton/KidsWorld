@@ -2,7 +2,11 @@
 
 <%# I had to use @items.length > 0 because a user (with no items) has a blank active record. If I just put `if @items`, ruby thinks this is true %>
 <% if @items.length > 0%>
-<h2 class="title">Items for sale from <%= @user.username %></h2>
+<h2 class="title">Sold Items from <%= current_user.username %></h2>
+
+
+
+
 
 <div class ="items">
 <% @items.each do |item| %>
@@ -14,11 +18,11 @@
         </p>
         <p><%= link_to item.title, item_path(item) %></p>
         <p><%= number_to_currency(item.price)%></p>
-        <p class="button is-primary">buy now</p>
+        <p>Purchased: <%= item.updated_at.to_date%> by (purchaser username - link to their profile)
     </div>
 <% end%>
 </div>
 
 <%else%>
-    <h3 class="title has-text-centered"><%=@user.username%> currently has no items for sale</h3>
+    <h3 class="title has-text-centered"><%=current_user.username%> currently has sold no items</h3>
 <%end%>

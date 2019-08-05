@@ -1,0 +1,27 @@
+ <%= render "shared/usermenu"%>
+
+<%# I had to use @items.length > 0 because a user (with no items) has a blank active record. If I just put `if @items`, ruby thinks this is true %>
+<% if @items.length > 0%>
+<h2 class="title">Items <%= current_user.username %> has purchased </h2>
+
+
+<div class ="items">
+<% @items.each do |i| %>
+    <div class="item-div">
+        <p>
+            <% if i.item.photo.attachment %>
+                <%= link_to image_tag(i.item.photo, class: "items-image"), purchase_receipt_path(i.item.id)%>
+            <%end%>
+        </p>
+        <p><%= link_to i.item.title, purchase_receipt_path(i.item.id) %></p>
+        <p><%= number_to_currency(i.item.price)%></p>
+        <p><strong>Purchased:</strong> <%= i.created_at.to_date%></p>
+        <p><strong>Owner:</strong> <% i.item.seller.username %></p>
+        <p><strong>Owner's Email:</strong> <% i.item.seller.email %></p>
+    </div>
+<% end%>
+</div>
+
+<%else%>
+    <h3 class="title has-text-centered"><%=current_user.username%> currently has bought no items</h3>
+<%end%>

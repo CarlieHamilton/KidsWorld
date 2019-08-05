@@ -14,7 +14,7 @@ class PurchasesController < ApplicationController
     quantity: 1,
     }],
     success_url: completed_purchase_url(@item.id),
-    cancel_url: 'http://localhost:3000/purchases/cancel',
+    cancel_url: root_url,
     )
   end
 
@@ -22,6 +22,15 @@ class PurchasesController < ApplicationController
     @item = Item.find(params[:id])
     @item.sold = true
     @item.save
+    @sold_item = Purchase.new(buyer_id: current_user.id, item_id: @item.id)
+    @sold_item.save
+  end
+
+  def receipt
+    @item = Item.find(params[:id])
+
+    # this is for the user menu
+    @user = current_user
   end
 
   private
