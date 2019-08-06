@@ -35,7 +35,7 @@ Our tech stack includes:
 
 - Ruby on Rails
 - HTML
-- SCSS
+- SCSS (Including Bulma for some styling)
 - Postgresql
 - Heroku for deployment
 - Cloudinary for image storage in production
@@ -47,7 +47,9 @@ Our tech stack includes:
 
 - fork and clone
 - bundle install
-- update database.yml
+- update `config/database.yml` with your postgresql username & password
+- update `config/credentials.yml` with your cloudinary api key. In order to decrypt the file to edit, type ```EDITOR='code --wait' rails credentials:edit``` into your command line.
+- add your stripe api key to `app/controllers/purchases_controller.rb`
 - `rails db:schema:load`
 - `rails db:seed`
 - `rails s` to run the server
@@ -155,7 +157,12 @@ Parents always like to give quality products to their kids. But often, quality p
 This thought made us bring up with an idea to create a website that could sell used and new toys, books, clothes and accessories like bedding etc so that every kid can enjoy and make memories in their childhood.
 
 ### 4) Describe the network infrastructure the App may be based on
+The website is deployed to heroku, which is run on lightweight Linux servers called dynos. Dynos belong to one of three different configuartions - web, worker, or one-off, and there are different types of dynos (that have different performance characteristics and properties) depending on the type of plan that a user has for their website. You can "scale up" your website for when you need more ram, for instance - you use bigger dynos; or you can "scale out" your website for when you need more http requests (higher traffic) by adding more dynos. You can also run on more dynos for redundancy purposes, incase of dynos failing.
 
+You can list the dynos of your app by typing `heroku ps` in your command line. For instance, our website currently has the following information:
+
+```web (Free): bin/rails server -p $PORT -e $RAILS_ENV (1)
+web.1: idle 2019/08/06 10:49:11 +1000 (~ 3h ago)```
 
 
 ### 5) Identify and describe the software to be used in your App.
