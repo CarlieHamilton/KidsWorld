@@ -2,4 +2,5 @@
     <%= link_to 'Your items for sale', seller_path(current_user), class: "button is-info" %>
     <%= link_to 'Your sold items', sold_items_path(@user.id), class: "button is-info" %>
     <%= link_to 'Your purchased items', purchased_items_path(@user.id), class: "button is-info" %>
+    <p>&nbsp;</p>
 <%end%>
