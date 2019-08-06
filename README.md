@@ -157,19 +157,23 @@ Parents always like to give quality products to their kids. But often, quality p
 This thought made us bring up with an idea to create a website that could sell used and new toys, books, clothes and accessories like bedding etc so that every kid can enjoy and make memories in their childhood.
 
 ### 4) Describe the network infrastructure the App may be based on
-The website is deployed to heroku, which is run on lightweight Linux servers called dynos. Dynos belong to one of three different configuartions - web, worker, or one-off, and there are different types of dynos (that have different performance characteristics and properties) depending on the type of plan that a user has for their website. You can "scale up" your website for when you need more ram, for instance - you use bigger dynos; or you can "scale out" your website for when you need more http requests (higher traffic) by adding more dynos. You can also run on more dynos for redundancy purposes, incase of dynos failing.
+The website is deployed to heroku, which is run on lightweight Linux servers called dynos. Dynos belong to one of three different configurations - web, worker, or one-off, and there are different types of dynos (that have different performance characteristics and properties, free dynos go to sleep) depending on the type of plan that a user has for their website.
+
+You can "scale up" your website for when you need more ram, for instance - you use bigger dynos; or you can "scale out" your website for when you need more http requests (higher traffic) by adding more dynos. You can also run on more dynos for redundancy purposes, incase of dynos failing.
 
 You can list the dynos of your app by typing `heroku ps` in your command line. For instance, our website currently has the following information:
 
 `web (Free): bin/rails server -p $PORT -e $RAILS_ENV (1)
 web.1: idle 2019/08/06 10:49:11 +1000 (~ 3h ago)`
 
+Heroku automatically routes HTTP requests sent to your website to your web dynos. Routers use an algorithm to randomly spread HTTP requests across the web dynos. When heroku receives a HTTP request, the router establishes a new TCP connection to a random web dyno. 
+
 
 ### 5) Identify and describe the software to be used in your App.
 
 
 
-### Identify the database to be used in your App and provide a justification for your choice
+### 6) Identify the database to be used in your App and provide a justification for your choice
 
 The database used in this app is postgresql. Postgres is an open source relational database.
 
