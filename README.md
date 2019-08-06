@@ -105,14 +105,12 @@ For this we would need to implement a new model that stores a user's address, as
 ## Wireframes
 
 ### Mobile
-
+![mobile wireframe homepage](docs/mobileWireframe-homepage.png)
+![mobile wireframe product description](docs/mobileWireframes-proddesc.png)
 ### Desktop
 ![desktop wireframe homepage](docs/wireframe-homepage.png)
 ![desktop wireframe listing](docs/wireframe-listing.png)
 ![desktop wireframe product description](docs/wireframeproddesc.png)
-
-### Tablet
-
 
 ## Database Entity Relationship Diagrams
 
@@ -171,7 +169,22 @@ Heroku automatically routes HTTP requests sent to your website to your web dynos
 
 ### 5) Identify and describe the software to be used in your App.
 
+* Ruby - A dynamic, open source programming language. It has an elegant syntax that is easy to read and write. It supports multiple programming paradigms, including procedural, object-oriented, and functional programming.
+Our website is created on the Ruby on Rails MVC framework which is an architectural pattern that separates an application into three main logical components: the model, the view,and the controller. The model and the controller components of our website are programmed in the Ruby language.
 
+* Ruby on Rails - Rails, is a server-side web application framework written in Ruby. It is a model – view – controller (MVC) framework, providing default structures for a database, a web service, and web pages. The model and the controller components of our website are programmed in the Ruby language whereas the view components are programmed in the embeded ruby syntax along with HTML which alltogether makes up Rails.
+
+* HTML - Hypertext Markup Language (HTML) is a markup language for documents designed to be displayed in a web browser. Web browsers receive HTML documents from a web server or from local storage and render the documents into multimedia web pages. HTML describes the structure of a web page semantically and originally included for the appearance of the document. We have used HTML in our views component which displays the pages of our website.
+
+* CSS - Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language like HTML. We have done some basic styling in "app/assets/stylesheets/items.scss" file to make our website neat and clean. This page lists the items put on sale on our website.
+    * Bulma - It’s a free, open source, and modern CSS framework based on Flexbox. We have used this for styling the buttons in our website like "Buy Now", "Edit", "Delete" etc.
+
+* Cloudinary - A third-party cloud-based service used for image and video management solution. It enables users to upload, store, manage, manipulate and deliver images and video for websites and apps. In our website, we used this solution to store and manage images of the items the seller would like to sell.
+
+* Stripe - A third-party service which allows individuals and businesses to make and receive payments over the Internet. In our website, we have a "Checkout Now" button with each item listed. When this button is clicked, the browser redirects to stripe where credit card data is handled. Once the payment is done by entering the credit card data, stripe will redirect the customer’s browser back.
+
+* Heroku - A third-party cloud platform service where websites can be deployed. To deploy our website, we used Heroku's Git server which handles the application repository pushes.
+More information can be found in Question# 10.
 
 ### 6) Identify the database to be used in your App and provide a justification for your choice
 
@@ -208,6 +221,8 @@ The app will use the following third party services.
 1) Cloudinary - A cloud-based image and video management solution. It enables users to upload, store, manage, manipulate and deliver images and video for websites and apps. In our website, we used this solution to store and manage images of the items the seller would like to sell.
 
 2) Stripe - Allows individuals and businesses to make and receive payments over the Internet. In our website, we have a "Checkout Now" button with each item listed. When this button is clicked, the browser redirects to stripe where credit card data is handled. Once the payment is done by entering the credit card data, stripe will redirect the customer’s browser back.
+
+![stripe](docs/stripe.png)
 
 3) Heroku - A cloud platform service where websites can be deployed. To deploy our website, we used Heroku's Git server which handles the application repository pushes.
 
