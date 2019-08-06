@@ -161,8 +161,8 @@ The website is deployed to heroku, which is run on lightweight Linux servers cal
 
 You can list the dynos of your app by typing `heroku ps` in your command line. For instance, our website currently has the following information:
 
-```web (Free): bin/rails server -p $PORT -e $RAILS_ENV (1)
-web.1: idle 2019/08/06 10:49:11 +1000 (~ 3h ago)```
+`web (Free): bin/rails server -p $PORT -e $RAILS_ENV (1)
+web.1: idle 2019/08/06 10:49:11 +1000 (~ 3h ago)`
 
 
 ### 5) Identify and describe the software to be used in your App.
