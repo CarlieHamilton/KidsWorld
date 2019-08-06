@@ -52,7 +52,7 @@ Our tech stack includes:
 - `rails db:seed`
 - `rails s` to run the server
 
-- Design documentation including,
+## Design documentation including,
 - Design process
 -
 
@@ -116,9 +116,27 @@ For this we would need to implement a new model that stores a user's address, as
 
 ![ERD](docs/ERD.png)
 
-- Details of planning process including,
+## Details of planning process
 
 ### Project Planning and Timeline
+
+Our project timeline was as follows:
+
+#### Week 1
+- Monday - Brainstorm and setup
+- Tuesday - ERD, Wireframes, planning discussion
+- Wednesday - Set up models, controllers, devise
+
+#### Week 2
+- Monday - Images/cloudinary, view all items
+- Tuesday - add, edit, delete items
+- Wednesday - stripe integration
+
+#### Week 3
+- Monday - Add category pages, add user store page
+- Tuesday - Finalise everything, make beautiful, finish readme
+- Wednesday - make presentation
+
 
 #### Trello
 Day 2 - July 23 Trello Board
@@ -136,12 +154,13 @@ Day 3 - July 24th Trello Board
 Parents always like to give quality products to their kids. But often, quality products are very expensive and not afordable by many. Our website allows parents to sell new and used kids items instead of throwing them out, and parents can buy quality products without having to pay retail. Often kids use a particular toy for a limited amount of time. Either they loose interest or they get new toys. The old toy is undamanged and still in good condition. So why not put the toy up for sale at a resonable price so that other kids could also enjoy it ? Same is the case with books and clothes, kids soon outgrow the clothes and books meant for their age and dont need them anymore.
 This thought made us bring up with an idea to create a website that could sell used and new toys, books, clothes and accessories like bedding etc so that every kid can enjoy and make memories in their childhood.
 
-# 4) Describe the network infrastructure the App may be based on.
+### 4) Describe the network infrastructure the App may be based on
 
-# 5) Identify and describe the software to be used in your App.
 
-- Describe the network infrastructure the App may be based on.
-- Identify and describe the software to be used in your App.
+
+### 5) Identify and describe the software to be used in your App.
+
+
 
 ### Identify the database to be used in your App and provide a justification for your choice
 
@@ -158,16 +177,6 @@ With the small nature of our app - only a few users and items to be implemented,
 Postgres does have a GUI interface if needed to be used as well as the command line interface, so it can be used by people with a wide range of technical knowledge.
 
 With the only real disadvantage being that it can have slower performance on larger datasets, and with many advantages from compatibiliy with heroku and the relational style of database, made postgresql the perfect database for our application.
-
-### Identify and describe the production database setup (i.e. postgres instance)
--
-### Describe the architecture of your App.
-
-
-- Explain the different high-level components (abstractions) in your App.
-
-
-### Detail any third party services that your App will use.
 
 ### 7) Identify and describe the production database setup (i.e. postgres instance).
 
@@ -238,16 +247,23 @@ Source control is the process of tracking code changes, able to view the revisio
 The source code management system that we used is Git. We created a git repository for our app. We have the master branch and created feature branches using the command 'git checkout -b branch-name' to work on our code independently. Once we have finished our code changes on a particular branch, we used the commands 'git add' and 'git commit' to store our changes locally. We then used 'git push origin branch-name' to push our local changes to the feature branch in the git repository. The other teammate could then pull down the branch using a pull request, review and test the code change, then accept/decline the changes, leave comments and push/merge it to the master branch if everything works fine. We have faced some merge conflicts and figured out what changes needs to be accpeted and have resolved the conflicts. We have worked independently on feature branches and have done frequent commits to the master so that its easy to manage and does not break the functionality.
 
 
-# 20) Provide an overview and description of your Testing process.
+### Provide an overview and description of your Testing process
 
+We used rspec and the rails-rspec gem to do unit testing.
 
+To run rspec we would use the following command: `rspec -f d <file-name (optional)>`
 
-Rspec
-to run, `rspec -f d`
-Write a new feature, write a new test. Test driven development.
-Save it to a log
+After there was a change in a result in the testing, we would save the results to our [test log](log/test_results.log)
 
-Tests defined for all user stories **
+Some examples of the tests that we ran that align with our user stories include:
+
+- A user can view all the items for sale - testing the item's index page, as well as the item's show page, and also these views are aligned with the controller.
+- A user can delete and edit a listing was tested in the item's controller. A user must be signed in and the item belong to them in order to complete these tasks
+- A user can sell an item (create a listing) - as tested in the items new view and the items controller.
+
+We tested the creation of entries for each model, the routing for pages as well as items in the controllers, and views. In total we have 36 passing tests.
+
+In the future we would love to implement more of a test driven development, rather than testing after a controller/view/model has been created.  We believe TDD will be easier now that we have an understanding of how rspec works with rails.
 
 # 21) Discuss and analyse requirements related to information system security.
 # 22) Discuss methods you will use to protect information and data.
