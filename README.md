@@ -96,7 +96,10 @@ We envision this will be so that users can contact other users through the websi
 
 For this we would need to implement a new model that stores a user's address, as well as perhaps a postage model that has the different postage rates for items (this could possibly exist as a gem). In the item model we may need to include a place where a user inputs the weight of an item. There may also be a boolean for if the user wants to send and item or it to be pickup/delivery only (such as, if the item is too large to easily send). Postage would then have to be added to every order, and when the order is complete the seller would have access to the buyer's postage address.
 
-### A workflow diagram of the user journey/s.
+### A workflow diagram of the user journey/s
+
+![User's Journey workflow](docs/userworkflow.png)
+
 ## Wireframes
 
 ### Mobile
