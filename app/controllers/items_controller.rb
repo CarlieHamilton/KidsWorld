@@ -63,9 +63,10 @@ class ItemsController < ApplicationController
     item = Item.find(params[:id])
     if item.seller_id == current_user.id
         Item.where(id: params[:id]).first.destroy
+        flash[:notice] = "Your item has been deleted"
         redirect_to items_path
     else
-        flash[:notice] = "You cannot delete this item"
+        flash[:alert] = "You cannot delete this item"
         redirect_to item_path
     end
   end

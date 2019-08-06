@@ -22,11 +22,17 @@ class PurchasesController < ApplicationController
     #changes the item to sold
     @item = Item.find(params[:id])
     @item.sold = true
-    @item.save
+    if @item.save
+      flash[:notice] = "You have successfully purchased this item!"
 
-    #creates a new item in the purchases table
-    @sold_item = Purchase.new(buyer_id: current_user.id, item_id: @item.id)
-    @sold_item.save
+      #creates a new item in the purchases table
+      @sold_item = Purchase.new(buyer_id: current_user.id, item_id: @item.id)
+      @sold_item.save
+
+    else
+       flash[:alert] = @item.errors.full_messages[0]
+       redirect_to item_path(@item.id)
+    end
   end
 
   def receipt
