@@ -166,7 +166,7 @@ You can list the dynos of your app by typing `heroku ps` in your command line. F
 `web (Free): bin/rails server -p $PORT -e $RAILS_ENV (1)
 web.1: idle 2019/08/06 10:49:11 +1000 (~ 3h ago)`
 
-Heroku automatically routes HTTP requests sent to your website to your web dynos. Routers use an algorithm to randomly spread HTTP requests across the web dynos. When heroku receives a HTTP request, the router establishes a new TCP connection to a random web dyno. 
+Heroku automatically routes HTTP requests sent to your website to your web dynos. Routers use an algorithm to randomly spread HTTP requests across the web dynos. When heroku receives a HTTP request, the router establishes a new TCP connection to a random web dyno.
 
 
 ### 5) Identify and describe the software to be used in your App.
@@ -229,13 +229,23 @@ The app will use the following third party services.
 Data structure of Etsy?
 
 # 12) Discuss the database relations to be implemented.
+
+Our database, as outlined in the ERD (above), shows that it is a relational database. The information in one table is related to the information in other tables.
+
+When considering our database design, we had to consider what information would be needed without creating a redundancy of information, so that each piece of information is in the database only once. This reduces the risk of out-of-date information so that the data is more accurate.
+
 # 13) Describe your project’s models in terms of the relationships (active record associations) they have with each other.
 # 14) Provide your database schema design.
 
 
 # 15) Provide User stories for your App.
+
+
 # 16) Provide Wireframes for your App.
+
 # 17) Describe the way tasks are allocated and tracked in your project.
+
+
 # 18) Discuss how Agile methodology is being implemented in your project.
 
 Although we were only a team of two, we implemented numerous agile methodologies in our workflow.
@@ -258,7 +268,7 @@ Source control is the process of tracking code changes, able to view the revisio
 The source code management system that we used is Git. We created a git repository for our app. We have the master branch and created feature branches using the command 'git checkout -b branch-name' to work on our code independently. Once we have finished our code changes on a particular branch, we used the commands 'git add' and 'git commit' to store our changes locally. We then used 'git push origin branch-name' to push our local changes to the feature branch in the git repository. The other teammate could then pull down the branch using a pull request, review and test the code change, then accept/decline the changes, leave comments and push/merge it to the master branch if everything works fine. We have faced some merge conflicts and figured out what changes needs to be accpeted and have resolved the conflicts. We have worked independently on feature branches and have done frequent commits to the master so that its easy to manage and does not break the functionality.
 
 
-### Provide an overview and description of your Testing process
+### 20) Provide an overview and description of your Testing process
 
 We used rspec and the rails-rspec gem to do unit testing.
 
