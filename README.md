@@ -36,6 +36,7 @@ Our tech stack includes:
 - Ruby on Rails
 - HTML
 - SCSS (Including Bulma for some styling)
+- Javascript for Stripe checkout
 - Postgresql
 - Heroku for deployment
 - Cloudinary for image storage in production
@@ -54,9 +55,9 @@ Our tech stack includes:
 - `rails db:seed`
 - `rails s` to run the server
 
-## Design documentation including,
-- Design process
--
+## Design documentation
+### Design process
+
 
 ## User stories
 
@@ -94,7 +95,7 @@ We have implemented being able to select a category, as a part of our main menu.
 
 We envision this will be so that users can contact other users through the website to organise pickup or delivery. At the moment, users get access to the person's email address which is not ideal.
 
-- A user can post an item (stretch goal)
+- A user can sell postage for an item (stretch goal)
 
 For this we would need to implement a new model that stores a user's address, as well as perhaps a postage model that has the different postage rates for items (this could possibly exist as a gem). In the item model we may need to include a place where a user inputs the weight of an item. There may also be a boolean for if the user wants to send and item or it to be pickup/delivery only (such as, if the item is too large to easily send). Postage would then have to be added to every order, and when the order is complete the seller would have access to the buyer's postage address.
 
@@ -105,12 +106,13 @@ For this we would need to implement a new model that stores a user's address, as
 ## Wireframes
 
 ### Mobile
-![Mobile wireframe homepage](docs/mobileWireframe-homepage.png)
-![Mobile wireframe product description](docs/mobileWireframes-proddesc.png)
-### Desktop
-![Desktop wireframe homepage](docs/wireframe-homepage.png)
-![Desktop wireframe listing](docs/wireframe-listing.png)
-![Desktop wireframe product description](docs/wireframeproddesc.png)
+![mobile wireframe homepage](docs/mobileWireframe-homepage.png)
+![mobile wireframe product description](docs/mobileWireframes-proddesc.png)
+### Desktop & Tablet
+![desktop wireframe homepage](docs/wireframe-homepage.png)
+![desktop wireframe listing](docs/wireframe-listing.png)
+![desktop wireframe product description](docs/wireframeproddesc.png)
+![desktop wireframe checkout](docs/wireframe-checkout.png)
 
 ## Database Entity Relationship Diagrams
 
@@ -171,7 +173,8 @@ Day 9 - Augast 07th Trello Board
 ### 2) Identify the problem you’re trying to solve by building this particular marketplace App? Why is it a problem that needs solving?
 ### 3) - Describe the project will you be conducting and how. your App will address the needs.
 
-Parents always like to give quality products to their kids. But often, quality products are very expensive and not afordable by many. Our website allows parents to sell new and used kids items instead of throwing them out, and parents can buy quality products without having to pay retail. Often kids use a particular toy for a limited amount of time. Either they loose interest or they get new toys. The old toy is undamanged and still in good condition. So why not put the toy up for sale at a resonable price so that other kids could also enjoy it ? Same is the case with books and clothes, kids soon outgrow the clothes and books meant for their age and dont need them anymore.
+Parents always like to give quality products to their kids. But often, quality products are very expensive and not affordable by many. Our website allows parents to sell new and used kids items instead of throwing them out, and parents can buy quality products without having to pay retail. Often kids use a particular toy for a limited amount of time. Either they loose interest or they get new toys. The old toy is undamaged and still in good condition. So why not put the toy up for sale at a reasonable price so that other kids could also enjoy it ? Same is the case with books and clothes, kids soon outgrow the clothes and books meant for their age and don't need them anymore.
+
 This thought made us bring up with an idea to create a website that could sell used and new toys, books, clothes and accessories like bedding etc so that every kid can enjoy and make memories in their childhood.
 
 ### 4) Describe the network infrastructure the App may be based on
@@ -185,7 +188,6 @@ You can list the dynos of your app by typing `heroku ps` in your command line. F
 web.1: idle 2019/08/06 10:49:11 +1000 (~ 3h ago)`
 
 Heroku automatically routes HTTP requests sent to your website to your web dynos. Routers use an algorithm to randomly spread HTTP requests across the web dynos. When heroku receives a HTTP request, the router establishes a new TCP connection to a random web dyno.
-
 
 ### 5) Identify and describe the software to be used in your App.
 
@@ -214,11 +216,13 @@ The database used in this app is postgresql. Postgres is an open source relation
 
 When considering what database to use for this project, we ultimately chose postgres. One main advantage of using postgres is that it is natively supported with Heroku, our deployment platform.
 
-In general, there are many advantages and disadvantages to using a postgres database. One advantage for us is the relational nature of the database, which helped with how we set up our ERD. This kind of database is good for transactional applications, another reason why it is a good fit for our project.
+In general, there are many advantagesto using a postgres database. One advantage for us is the relational nature of the database, which helped with how we set up our ERD. This kind of database is good for transactional applications, another reason why it is a good fit for our project.
 
 Being an open source database means that there would be many resources online to help us if we ran into any problems.
 
-With the small nature of our app - only a few users and items to be implemented, with no real likelihood of needing to scale the app to a large amount of data - we did not have to fully explore the scalability of our database. That being said, one advantage of postgres is that it does scale to larger projects, however it can become more memory intensive for larger databases. If we were looking at needing a larger scale database in the future, this may have been more of a consideration. With our app as it is, postgres is fast and performant, as well as providing secure data storage.
+With the small nature of our app - only a few users and items to be implemented, with no real likelihood of needing to scale the app to a large amount of data - we did not have to fully explore the scalability of our database. That being said, one advantage of postgres is that it does scale to larger projects.
+
+However it can become more memory intensive for larger databases. If we were looking at needing a larger scale database in the future, this may have been more of a consideration. With our app as it is, postgres is fast and performant, as well as providing secure data storage.
 
 Postgres does have a GUI interface if needed to be used as well as the command line interface, so it can be used by people with a wide range of technical knowledge.
 
@@ -228,9 +232,9 @@ With the only real disadvantage being that it can have slower performance on lar
 
 Heroku runs its own postgresql server instance. The database needs to be setup to run in the heroku (production) environment.
 To set up the database, the following steps were followed:
-    ** To create our tables from the db/schema.rb file - heroku run rails db:schema:load
-    ** To update the changes made to the database structure (tables, columns) once changes where made after deploying to         production - heroku rails db:migrate
-    ** To seed any data we need in production - heroku rails db:seed
+    * To create our tables from the db/schema.rb file - `heroku run rails db:schema:load`
+    * To update the changes made to the database structure (tables, columns) once changes where made after deploying to production - `heroku run rails db:migrate`
+    * To seed any data we need in production - `heroku run rails db:seed`
 
 # 8) Describe the architecture of your App.
 # 9) Explain the different high-level components (abstractions) in your App.
@@ -247,17 +251,17 @@ The app will use the following third party services.
 
 3) Heroku - A cloud platform service where websites can be deployed. To deploy our website, we used Heroku's Git server which handles the application repository pushes.
 
-* To create a new git remote - heroku create kidsworld.
+* To create a new git remote - `heroku create kidsworld`.
   The git remote created for our website is : https://kidsworld.herokuapp.com/
 * To check the connection to the repository hosted on heroku - git remote -v
 * To let heroku know the key value for the website to work, we need to set the master key in the heroku environment .The master key     can be found in the config directory in a file called master.key
-* To set the master key - heroku config:set RAILS_MASTER_KEY=<master-key>
-* To push to the heroku repo - git push heroku master
+* To set the master key - `heroku config:set RAILS_MASTER_KEY=<master-key>`
+* To push to the heroku repo - `git push heroku master`
 * To set up the database, the following steps were followed:
-    ** To create our tables from the db/schema.rb file - heroku run rails db:schema:load
-    ** To update the changes made to the database structure (tables, columns) once changes where made after deploying to production - heroku rails db:migrate
-    ** To seed any data we need in production - heroku rails db:seed
-* To open the website in heroku - heroku open.
+    ** To create our tables from the db/schema.rb file - `heroku run rails db:schema:load`
+    ** To update the changes made to the database structure (tables, columns) once changes where made after deploying to production - `heroku run rails db:migrate`
+    ** To seed any data we need in production - `heroku run rails db:seed`
+* To open the website in heroku - `heroku open`.
   The webpage https://kidsworld.herokuapp.com/ opens up in the browser.
 
 # 11) Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb).
@@ -267,25 +271,160 @@ Our website's data structure is similar to that of Etsy.
 Etsy has tools for the sellers to allow them to represent their inventory more accurately in their listings, giving them more control over how they set their prices and manage their stock. It also allow sellers to describe their items in ways that have a consistent meaning to buyers. For example, the seller can mention the category, size etc so that buyers can search for an item based on the filters.
 Our website allows sellers to advertise their inventory based on the category etc so that buyers can browse through the categories in our website to find a particular item. We would like to implement a search functionality for our website as a future enhancement so that buyers can search for a particular item.
 
-# 12) Discuss the database relations to be implemented.
+### 12) Discuss the database relations to be implemented.
 
 Our database, as outlined in the ERD (above), shows that it is a relational database. The information in one table is related to the information in other tables.
 
 When considering our database design, we had to consider what information would be needed without creating a redundancy of information, so that each piece of information is in the database only once. This reduces the risk of out-of-date information so that the data is more accurate.
 
-# 13) Describe your project’s models in terms of the relationships (active record associations) they have with each other.
-# 14) Provide your database schema design.
+For instance, with our Purchases model, all we needed to do was reference the Users and the Items table with the unique id of the buyer and the item. Then, through the item we would be able to also access all the information on the seller. This is because of the relational nature of the database.
+
+We considered that each cell in a table would only have one piece of data and not an array of data, to make our tables normalised. For instance, if in the future a user can add more than one object to a cart, we could of had a row that shows all items in one cart in one row - this would be an array of items. Instead, we would have multiple rows in our Purchases table referencing the one order.
+
+In a future implementation, we could easily add on to our database. For instance, if we needed to capture a user's postal address, we could create a new table an have that reference the  unique id of the User. We could also add tables when we would implement messaging between users, and we would have to consider the normalisation of data when doing so.
+
+### 13) Describe your project’s models in terms of the relationships (active record associations) they have with each other
+
+Our application has three models, Item, Purchase and User.
+
+The Item model belongs to the User, and a User has many Items. In our case, an item that belongs to User, that User is called a Seller. An item can not exist without a Seller.
+
+The Purchase model belongs to both the Item and User model. In this case, the User that belongs to the Purchase is called a Buyer, as that user has bought an item. Each item can have one purchase (but not necessarily have a purchase). A Buyer can have many purchases. A Purchase can not exist without a Buyer or an Item.
+
+A User can be both a Buyer and a Seller, or may not have any Items or Purchases at all.
+
+In our ERD, we called the User's Unique ID as either the buyer_id and the seller_id so that it would be clear as to what kind of job the user would have for each table.
+
+### 14) Provide your database schema design
+
+For our User model, we have the following schema design:
+
+```
+email: string, default: "", null: false
+username: string
+encrypted_password: string, default: "", null: false
+reset_password_token: string
+reset_password_sent_at: datetime
+remember_created_at: datetime
+created_at: datetime, null: false
+updated_at: datetime, null: false
+["email"]: index, name: "index_users_on_email", unique: true
+["reset_password_token"]: index, name: "index_users_on_reset_password_token", unique: true
+```
+
+The User model was generated by Devise, a gem, and we added the Username column, as a string. The username NEEDS TO BE NOT NULL
+
+The Items model schema:
+```
+"seller_id": bigint
+"title": string, limit: 100
+"description": string, limit: 250
+"condition": integer
+"category": interger
+"sold": boolean, default: false
+"created_at": datetime, null: false
+"updated_at": datetime, null: false
+"price": decimal, precision: 8, scale: 2
+["seller_id"]: index, name: "index_items_on_seller_id"
+```
+
+Of note, our condition and category columns are integers. That as because they are then defined as a enumerable (enum) in our Item model.
+We also have set price as a decimal with precision as 8 (total 8 digits), and the scale as 2 (two decimals places).
+
+We decided that the core pieces of required information would be the Title and Price. All other sections are not required to make a new item.
+
+The Sold column is a boolean, that defaults to false. This way, when a new item is created the user doesn't choose if it is sold or not, it is created as false. When the item is sold, it is changed to true.
 
 
-# 15) Provide User stories for your App.
+And the Purchases model schema:
+```
+"buyer_id": bigint
+"item_id": bigint
+"created_at": datetime, null: false
+"updated_at": datetime, null: false
+["buyer_id"]: index, name: "index_purchases_on_buyer_id"
+["item_id"]: index, name: "index_purchases_on_item_id"
+```
+The Purchases table references the Item and User table.
+
+Our foreign keys in the schema are as follows for these models:
+```
+add_foreign_key "items", "users", column: "seller_id"
+add_foreign_key "purchases", "items"
+add_foreign_key "purchases", "users", column: "buyer_id"
+```
+
+We also have active storage tables in our database for our image uploads. They are as follows:
+
+```
+ create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+    add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  ```
+
+### 15) Provide User stories for your App.
+
+The user stories were explained in detail in the first section of this readme. Here is a summary of the user stories:
+
+- A user can view all items available for sale
+- A user can buy an item
+- A user can sell an item (create a listing)
+- A user can edit and delete a listing
+- A user can upload an image to their listing
+- A user can log in and out
+- A user can view the details of an individual item
+- A user can see a list of their past purchases (stretch goal - reached)
+- A user can see a list of their sold items (stretch goal - reached)
+- A user can sort all the listings (by price, most recent, by category -- stretch goal)
+- A user can message another user (stretch goal)
+- A user can sell postage for an item (stretch goal)
 
 
-# 16) Provide Wireframes for your App.
+### 16) Provide Wireframes for your App.
+
+The wireframes were detailed the first section of this readme.
+
+We originally had a different concept for the wire frames. Our original homepage wireframe for desktop was designed such as:
+
+![original wireframe desktop](docs/wireframe-original-homepage.png)
+
+We ended up changing this as we worked on a project. This is an example as well as our team using agile methodology in our project - continually itterating and revisiting our plans and changing them if necessary for our project.
 
 # 17) Describe the way tasks are allocated and tracked in your project.
 
+Our team used a trello board to create and track our tasks. We created cards that align with the user stories and the project's rubric, in order to make sure that we covered every angle that we needed for the project.
 
-# 18) Discuss how Agile methodology is being implemented in your project.
+We had a column in our trello board that referenced the requirements, sizing, priorities, and timings, as well as what we hoped to achieve in our MVP and possible future enhancements. Our second column was a reference to our numbered user stories so that we could quickly see what card was referencing what user story.
+
+Our main columns for the Trello board were as follows:
+ - To Do - a long list of the tasks we wished to get done
+ - Up Next - cards we had prioritised to work on next when we were finished what we were currently working on. This allowed some easier sorting and prioritising of our tasks.
+ - In Progress - cards we were currently working on
+ - Testing and Review - cards which were waiting to be checked and merged into master in a pull request. These cards may need to be moved back into in progress if necessary after the review
+ - Complete - our finished tasks.
+
+Each day we worked on a daily sprint with a goal of what we wanted to complete. We talked together on what each wanted to do in order to meet our daily goal, and tasks were then allocated to each team member. Some tasks we worked together in pair programming, other times we worked individually on a task.
+
+### 18) Discuss how Agile methodology is being implemented in your project.
 
 Although we were only a team of two, we implemented numerous agile methodologies in our workflow.
 
@@ -297,9 +436,7 @@ We participated in the classroom-wide stand up, which meant that we also togethe
 
 Our coding focused on feature driven development, aligning with our user stories, and we used [unit testing](https://github.com/BlueCodeThree/KidsWorld/blob/testing/log/test_results.log) to test our implementation.
 
-We deployed early and often to Heroku, changing our requirements for the project if necessary.
-
-
+We deployed early and often to Heroku, changing our requirements for the project if necessary. One example is changing the original wireframes for our website when it did not suit as our project was developed.
 
 ### 19) Provide an overview and description of your Source control process.
 
