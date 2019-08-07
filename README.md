@@ -49,7 +49,7 @@ Our tech stack includes:
 - fork and clone
 - bundle install
 - update `config/database.yml` with your postgresql username & password
-- update `config/credentials.yml` with your cloudinary api key. In order to decrypt the file to edit, type ```EDITOR='code --wait' rails credentials:edit``` into your command line.
+- update `config/credentials.yml` with your cloudinary api key. In order to decrypt the file to edit, type ```EDITOR='code --wait'      rails credentials:edit``` into your command line.
 - add your stripe api key to `app/controllers/purchases_controller.rb`
 - `rails db:schema:load`
 - `rails db:seed`
@@ -141,9 +141,33 @@ Our project timeline was as follows:
 
 
 #### Trello
+Day 2 - July 23rd Trello Board
+![Trello 23rd July](docs/Screenshot-23July.png)
+
+Day 3 - July 24th Trello Board
+![Trello 24rd July](docs/Screenshot-24July.png)
+
+Day 4 - July 29th Trello Board
+![Trello 29th July](docs/Screenshot-29July.png)
+
+Day 5 - July 30th Trello Board
+![Trello 30th July](docs/Screenshot-30July.png)
+
+Day 6 - July 31st Trello Board
+![Trello 31st July](docs/Screenshot-31July.png)
+
+Day 7 - Augast 05th Trello Board
+![Trello 05th Augast](docs/Screenshot-05Aug.png)
+
+Day 8 - Augast 06th Trello Board
+![Trello 06th Augast](docs/Screenshot-06Aug.png)
+
+Day 9 - Augast 07th Trello Board
+![Trello 07th Augast]()
 
 
 ## Short Answer Questions
+#--------------------------#
 
 ### 1) What is the need (i.e. challenge) that you will be addressing in your project?
 ### 2) Identify the problem you’re trying to solve by building this particular marketplace App? Why is it a problem that needs solving?
@@ -166,6 +190,8 @@ web.1: idle 2019/08/06 10:49:11 +1000 (~ 3h ago)`
 Heroku automatically routes HTTP requests sent to your website to your web dynos. Routers use an algorithm to randomly spread HTTP requests across the web dynos. When heroku receives a HTTP request, the router establishes a new TCP connection to a random web dyno.
 
 ### 5) Identify and describe the software to be used in your App.
+
+The different softwares used in our website are:
 
 * Ruby - A dynamic, open source programming language. It has an elegant syntax that is easy to read and write. It supports multiple programming paradigms, including procedural, object-oriented, and functional programming.
 Our website is created on the Ruby on Rails MVC framework which is an architectural pattern that separates an application into three main logical components: the model, the view,and the controller. The model and the controller components of our website are programmed in the Ruby language.
@@ -211,7 +237,6 @@ To set up the database, the following steps were followed:
     * To seed any data we need in production - `heroku run rails db:seed`
 
 # 8) Describe the architecture of your App.
-
 # 9) Explain the different high-level components (abstractions) in your App.
 
 ### 10) Detail any third party services that your App will use.
@@ -222,7 +247,7 @@ The app will use the following third party services.
 
 2) Stripe - Allows individuals and businesses to make and receive payments over the Internet. In our website, we have a "Checkout Now" button with each item listed. When this button is clicked, the browser redirects to stripe where credit card data is handled. Once the payment is done by entering the credit card data, stripe will redirect the customer’s browser back.
 
-![stripe](docs/stripe.png)
+![Stripe Implementation Workflow](docs/stripe.png)
 
 3) Heroku - A cloud platform service where websites can be deployed. To deploy our website, we used Heroku's Git server which handles the application repository pushes.
 
@@ -239,9 +264,12 @@ The app will use the following third party services.
 * To open the website in heroku - `heroku open`.
   The webpage https://kidsworld.herokuapp.com/ opens up in the browser.
 
-#11) Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb).
+# 11) Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb).
 
-Data structure of Etsy?
+Our website's data structure is similar to that of Etsy.
+
+Etsy has tools for the sellers to allow them to represent their inventory more accurately in their listings, giving them more control over how they set their prices and manage their stock. It also allow sellers to describe their items in ways that have a consistent meaning to buyers. For example, the seller can mention the category, size etc so that buyers can search for an item based on the filters.
+Our website allows sellers to advertise their inventory based on the category etc so that buyers can browse through the categories in our website to find a particular item. We would like to implement a search functionality for our website as a future enhancement so that buyers can search for a particular item.
 
 ### 12) Discuss the database relations to be implemented.
 
@@ -436,4 +464,6 @@ In the future we would love to implement more of a test driven development, rath
 
 # 21) Discuss and analyse requirements related to information system security.
 # 22) Discuss methods you will use to protect information and data.
+
+
 # 23) Research what your legal obligations are in relation to handling user data.
