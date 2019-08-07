@@ -48,57 +48,56 @@ Our tech stack includes:
 - fork and clone
 - bundle install
 - update `config/database.yml` with your postgresql username & password
-- update `config/credentials.yml` with your cloudinary api key. In order to decrypt the file to edit, type ```EDITOR='code --wait'      rails credentials:edit``` into your command line.
+- update `config/credentials.yml` with your cloudinary api key. In order to decrypt the file to edit, type 
+    ```EDITOR='code --wait' rails credentials:edit``` into your command line.
 - add your stripe api key to `app/controllers/purchases_controller.rb`
 - `rails db:schema:load`
 - `rails db:seed`
 - `rails s` to run the server
 
 ## Design documentation including,
-- Design process
--
+- Design process - on paper
+- ERD
+- Wireframe
+- User Stories in Trello board
 
 ## User stories
 
 We created a list of user stories that we needed to complete for our MVP, as well as user stories as stretch goals. They are as follows:
 
-- A user can view all items available for sale
-
-Sold items would not be viewable so that they do not confuse the buyer. A user would not have to be logged in to see all the items.
+- A user can view all items available for sale  
+    Sold items would not be viewable so that they do not confuse the buyer. A user would not have to be logged in to see all the items.
 
 - A user can buy an item
-- A user can sell an item (create a listing)
 
-A user can only create a listing if they are signed in.
+- A user can sell an item (create a listing)
+    A user can only create a listing if they are signed in.
 
 - A user can edit and delete a listing
-
-A user would only be able to edit and delete their own listings.
+    A user would only be able to edit and delete their own listings and if they are signed in.
 
 - A user can upload an image to their listing
-- A user can log in and out
-- A user can view the details of an individual item
-- A user can see a list of their past purchases (stretch goal)
 
-Goal completed. A user can view their past purchases. We implemented a Purchases model to record who purchased what item.
+- A user can log in and out
+
+- A user can view the details of an individual item
+
+- A user can see a list of their past purchases (stretch goal)
+    Goal completed. A user can view their past purchases. We implemented a Purchases model to record who purchased what item.
 
 - A user can see a list of their sold items (stretch goal)
-
-Goal completed. A user can see their sold items, who purchased them, and the person's contact email
+    Goal completed. A user can see their sold items, who purchased them, and the person's contact email
 
 - A user can sort all the listings (by price, most recent, by category -- stretch goal)
-
-We have implemented being able to select a category, as a part of our main menu. Sorting by most recent is the default view. In the future we would implement being able to sort by price, and other ways of sorting.
+    We have implemented being able to select a category, as a part of our main menu. Sorting by most recent is the default view. In the future we would implement being able to sort by price, and other ways of sorting.
 
 - A user can message another user (stretch goal)
-
-We envision this will be so that users can contact other users through the website to organise pickup or delivery. At the moment, users get access to the person's email address which is not ideal.
+    We envision this will be so that users can contact other users through the website to organise pickup or delivery. At the moment, users get access to the person's email address which is not ideal.
 
 - A user can post an item (stretch goal)
+    For this we would need to implement a new model that stores a user's address, as well as perhaps a postage model that has the different postage rates for items (this could possibly exist as a gem). In the item model we may need to include a place where a user inputs the weight of an item. There may also be a boolean for if the user wants to send and item or it to be pickup/delivery only (such as, if the item is too large to easily send). Postage would then have to be added to every order, and when the order is complete the seller would have access to the buyer's postage address.
 
-For this we would need to implement a new model that stores a user's address, as well as perhaps a postage model that has the different postage rates for items (this could possibly exist as a gem). In the item model we may need to include a place where a user inputs the weight of an item. There may also be a boolean for if the user wants to send and item or it to be pickup/delivery only (such as, if the item is too large to easily send). Postage would then have to be added to every order, and when the order is complete the seller would have access to the buyer's postage address.
-
-### A workflow diagram of the user journey/s
+## A workflow diagram of the user journey/s
 
 ![User's Journey workflow](docs/userworkflow.png)
 
@@ -165,10 +164,16 @@ Day 9 - Augast 07th Trello Board
 
 
 ## Short Answer Questions
-#--------------------------#
 
 ### 1) What is the need (i.e. challenge) that you will be addressing in your project?
+
+Our website is an apt platform for bringing the buyers and sellers together to maintain sustainability by reusing items that are not damanged but serves its purpose. This helps in reducing wastage. Our website is a place to sell kids's items that are new and used - undamanged and in good condition. Buyers can find cheap and quality items at a very resonable price and they dont have to pay retail.
+
 ### 2) Identify the problem you’re trying to solve by building this particular marketplace App? Why is it a problem that needs solving?
+
+Details mentioned in Question# 1 & 3.
+Our website provides a safe and secure payment platform for the buyers. It also provides a wider customer base for the seller.
+
 ### 3) - Describe the project will you be conducting and how. your App will address the needs.
 
 Parents always like to give quality products to their kids. But often, quality products are very expensive and not afordable by many. Our website allows parents to sell new and used kids items instead of throwing them out, and parents can buy quality products without having to pay retail. Often kids use a particular toy for a limited amount of time. Either they loose interest or they get new toys. The old toy is undamanged and still in good condition. So why not put the toy up for sale at a resonable price so that other kids could also enjoy it ? Same is the case with books and clothes, kids soon outgrow the clothes and books meant for their age and dont need them anymore.
@@ -228,9 +233,9 @@ With the only real disadvantage being that it can have slower performance on lar
 
 Heroku runs its own postgresql server instance. The database needs to be setup to run in the heroku (production) environment.
 To set up the database, the following steps were followed:
-    ** To create our tables from the db/schema.rb file - heroku run rails db:schema:load
-    ** To update the changes made to the database structure (tables, columns) once changes where made after deploying to         production - heroku rails db:migrate
-    ** To seed any data we need in production - heroku rails db:seed
+    * To create our tables from the db/schema.rb file - heroku run rails db:schema:load
+    * To update the changes made to the database structure (tables, columns) once changes where made after deploying to         production - heroku rails db:migrate
+    * To seed any data we need in production - heroku rails db:seed
 
 # 8) Describe the architecture of your App.
 # 9) Explain the different high-level components (abstractions) in your App.
@@ -241,7 +246,8 @@ The app will use the following third party services.
 
 1) Cloudinary - A cloud-based image and video management solution. It enables users to upload, store, manage, manipulate and deliver images and video for websites and apps. In our website, we used this solution to store and manage images of the items the seller would like to sell.
 
-2) Stripe - Allows individuals and businesses to make and receive payments over the Internet. In our website, we have a "Checkout Now" button with each item listed. When this button is clicked, the browser redirects to stripe where credit card data is handled. Once the payment is done by entering the credit card data, stripe will redirect the customer’s browser back.
+2) Stripe - Allows individuals and businesses to make and receive payments over the Internet. 
+Industry standards require that we never store credit card details on our server. In our website, we have a "Checkout Now" button with each item listed. When this button is clicked, the browser redirects to stripe where credit card data is handled. Once the payment is done by entering the credit card data, stripe will redirect the customer’s browser back.
 
 ![Stripe Implementation Workflow](docs/stripe.png)
 
@@ -260,32 +266,35 @@ The app will use the following third party services.
 * To open the website in heroku - heroku open.
   The webpage https://kidsworld.herokuapp.com/ opens up in the browser.
 
-# 11) Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb).
+### 11) Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb).
 
 Our website's data structure is similar to that of Etsy.
 
 Etsy has tools for the sellers to allow them to represent their inventory more accurately in their listings, giving them more control over how they set their prices and manage their stock. It also allow sellers to describe their items in ways that have a consistent meaning to buyers. For example, the seller can mention the category, size etc so that buyers can search for an item based on the filters.
 Our website allows sellers to advertise their inventory based on the category etc so that buyers can browse through the categories in our website to find a particular item. We would like to implement a search functionality for our website as a future enhancement so that buyers can search for a particular item.
 
-# 12) Discuss the database relations to be implemented.
+### 12) Discuss the database relations to be implemented.
 
 Our database, as outlined in the ERD (above), shows that it is a relational database. The information in one table is related to the information in other tables.
 
 When considering our database design, we had to consider what information would be needed without creating a redundancy of information, so that each piece of information is in the database only once. This reduces the risk of out-of-date information so that the data is more accurate.
 
-# 13) Describe your project’s models in terms of the relationships (active record associations) they have with each other.
-# 14) Provide your database schema design.
+### 13) Describe your project’s models in terms of the relationships (active record associations) they have with each other.
+
+### 14) Provide your database schema design.
+
+### 15) Provide User stories for your App.
+
+The user stories for our website are mentioned in the "User Stories" section at the top of this document.
+
+### 16) Provide Wireframes for your App.
+
+The wireframes are attached in the "Wireframes" section at the top of this document.
+
+### 17) Describe the way tasks are allocated and tracked in your project.
 
 
-# 15) Provide User stories for your App.
-
-
-# 16) Provide Wireframes for your App.
-
-# 17) Describe the way tasks are allocated and tracked in your project.
-
-
-# 18) Discuss how Agile methodology is being implemented in your project.
+### 18) Discuss how Agile methodology is being implemented in your project.
 
 Although we were only a team of two, we implemented numerous agile methodologies in our workflow.
 
@@ -325,8 +334,35 @@ We tested the creation of entries for each model, the routing for pages as well 
 
 In the future we would love to implement more of a test driven development, rather than testing after a controller/view/model has been created.  We believe TDD will be easier now that we have an understanding of how rspec works with rails.
 
-# 21) Discuss and analyse requirements related to information system security.
-# 22) Discuss methods you will use to protect information and data.
+### 21) Discuss and analyse requirements related to information system security.
 
+* The user story - A user can log in and out
+    User data is at risk when user is asked to register using email-id and password. 'Devise' gem takes care of this by securely storing the email and the encrypted password.
 
-# 23) Research what your legal obligations are in relation to handling user data.
+* The user story - A user can buy an item
+    User is asked to enter the credit card data to buy an item. Industry standards require that we never store credit card details on our server. To avoid such sensitive data being stored on our servers we send the customer to 'Stripe' - a third-party service which takes care of this. Once the payment is done by entering the credit card data, stripe will redirect the customer’s browser back.
+
+### 22) Discuss methods you will use to protect information and data.
+
+'Devise' gem - protects and securely stores email and the encrypted password.
+'Stripe' - Handles senstitive data.
+More details in Question# 21.
+
+### 23) Research what your legal obligations are in relation to handling user data.
+
+* Personal information that are collected by our website are the user’s:
+    name
+    email-id
+    password
+* User's personal information should not be shared with third parties like Google or Facebook. 
+* User's personal information should be stored in a database and access to this database is strictly controlled by              authentication and authorization.
+* When using production data in other environments like test and UAT, user's personal information like name, email-id etc are   masked so that user cannot be identified.
+* Privacy policy page (a future enhancement feature) which explains why our website collects personal information and what is done with it. For Example, the third-party service 'Stripe' may use the payment data for analysing consumer spending habits.
+* Take reasonable steps to destroy or de-identify personal information when it is no longer needed.
+* As our website requires the user to sign-in to create a listing or to purchase an item, we are obliged to:
+    ** Protect personal information from:
+        theft
+        misuse
+        loss
+        unauthorised access
+        modification
