@@ -141,23 +141,7 @@ Our project timeline was as follows:
 
 
 #### Trello
-Tuesday July 23 Trello Board
-![ Trello 23rd July ]( /docs/trello23july.png )
 
-Wednesday July 24th Trello Board
-![ Trello 24rd July ]( /docs/trello24july.png )
-
-Monday July 29th Trello Board
-![Trello 29 July](docs/Trello29July.png)
-
-Tuesday July 30th Trello Board
-![Trello 30 July](docs/Trello30July.png)
-
-Wednesday July 31th Trello Board
-![Trello 31 July](docs/Trello31July.png)
-
-Monday Aug 5th Trello Board
-![Trello Aug 5](docs/Trello05Aug.png)
 
 ## Short Answer Questions
 
@@ -399,6 +383,18 @@ We ended up changing this as we worked on a project. This is an example as well 
 
 # 17) Describe the way tasks are allocated and tracked in your project.
 
+Our team used a trello board to create and track our tasks. We created cards that align with the user stories and the project's rubric, in order to make sure that we covered every angle that we needed for the project.
+
+We had a column in our trello board that referenced the requirements, sizing, priorities, and timings, as well as what we hoped to achieve in our MVP and possible future enhancements. Our second column was a reference to our numbered user stories so that we could quickly see what card was referencing what user story.
+
+Our main columns for the Trello board were as follows:
+ - To Do - a long list of the tasks we wished to get done
+ - Up Next - cards we had prioritised to work on next when we were finished what we were currently working on. This allowed some easier sorting and prioritising of our tasks.
+ - In Progress - cards we were currently working on
+ - Testing and Review - cards which were waiting to be checked and merged into master in a pull request. These cards may need to be moved back into in progress if necessary after the review
+ - Complete - our finished tasks.
+
+Each day we worked on a daily sprint with a goal of what we wanted to complete. We talked together on what each wanted to do in order to meet our daily goal, and tasks were then allocated to each team member. Some tasks we worked together in pair programming, other times we worked individually on a task.
 
 ### 18) Discuss how Agile methodology is being implemented in your project.
 
