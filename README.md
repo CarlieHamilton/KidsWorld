@@ -28,6 +28,33 @@ A user can see another user's items for sale in their each user's own sale page.
 It a future implementation, we would have a messaging system so that users can contact other users to ask questions and communicate with the other users.
 
 ## Screenshots
+Kid's World homepage
+![Kid's World homepage](docs/websiteScreenshots/homepage.png)
+
+Toys page
+![Toys page](docs/websiteScreenshots/toys-page.png)
+
+Item description
+![Item description](docs/websiteScreenshots/item-description.png)
+
+Add a new item page
+![Add a new item page](docs/websiteScreenshots/New-item.png)
+
+Page displaying the items for sale from a user
+![Page displaying the items for sale from a user](docs/websiteScreenshots/items-for-sale-from-a-user.png)
+
+Page displaying the items user has purchased
+![Page displaying the items user has purchased](docs/websiteScreenshots/items-user-has-purchased.png)
+
+Page displaying the sold items of a user
+![Page displaying the sold items of a user](docs/websiteScreenshots/sold-item-of-a-user.png)
+
+Payment using Stripe
+![Payment using Stripe](docs/websiteScreenshots/payment-using-stripe.png)
+
+Order complete page
+![Order complete page](docs/websiteScreenshots/order-complete.png)
+
 
 ## Tech stack (e.g. html, css, deployment platform, etc)
 
@@ -162,8 +189,10 @@ Day 8 - Augast 06th Trello Board
 ![Trello 06th Augast](docs/Screenshot-06Aug.png)
 
 Day 9 - Augast 07th Trello Board
-![Trello 07th Augast]()
+![Trello 07th Augast](docs/Screenshot-07Aug.png)
 
+Final Trello Board
+![Completed]()
 
 ## Short Answer Questions
 
