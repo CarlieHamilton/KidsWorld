@@ -195,7 +195,7 @@ Day 9 - Augast 07th Trello Board
 ![Trello 07th Augast](docs/Screenshot-07Aug.png)
 
 Final Trello Board
-![Completed]()
+![Completed](docs/Final.png)
 
 ## Short Answer Questions
 
