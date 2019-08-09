@@ -6,6 +6,9 @@ class User < ApplicationRecord
   has_many :items
   has_many :purchases
 
+  validates_presence_of     :username
+  validates_uniqueness_of   :username
+
   def name
    return username ? username : email
  end

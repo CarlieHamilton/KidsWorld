@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_04_045249) do
+ActiveRecord::Schema.define(version: 2019_08_09_020342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,21 +37,21 @@ ActiveRecord::Schema.define(version: 2019_08_04_045249) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.bigint "seller_id"
-    t.string "title", limit: 100
+    t.bigint "seller_id", null: false
+    t.string "title", limit: 100, null: false
     t.string "description", limit: 250
     t.integer "condition"
     t.integer "category"
     t.boolean "sold", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "price", precision: 8, scale: 2
+    t.decimal "price", precision: 8, scale: 2, null: false
     t.index ["seller_id"], name: "index_items_on_seller_id"
   end
 
   create_table "purchases", force: :cascade do |t|
-    t.bigint "buyer_id"
-    t.bigint "item_id"
+    t.bigint "buyer_id", null: false
+    t.bigint "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["buyer_id"], name: "index_purchases_on_buyer_id"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2019_08_04_045249) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "username"
+    t.string "username", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
