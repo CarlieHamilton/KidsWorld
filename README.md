@@ -264,7 +264,7 @@ With the only real disadvantage being that it can have slower performance on lar
 
 ### 7) Identify and describe the production database setup (i.e. postgres instance).
 
-Heroku runs its own postgresql server instance. The database needs to be setup to run in the heroku (production) environment.
+Heroku runs its own postgresql  Pserver instance. The database needs to be setup to run in the heroku (production) environment.
 To set up the database, the following steps were followed:
     * To create our tables from the db/schema.rb file - `heroku run rails db:schema:load`
     * To update the changes made to the database structure (tables, columns) once changes where made after deploying to production - `heroku run rails db:migrate`
@@ -274,15 +274,53 @@ To set up the database, the following steps were followed:
 
 Our app is structured in the MVC - model, views, controller - architectural pattern.
 
-Models interact with the database, accessing the required information from there. For instance, a class within the Item model may get all the items from the database where sold == false.
+Models interact with the database, accessing the required information from there. For instance, a function within the Item model may get all the items from the database where sold == false.
 Views are the information that is presented to the viewer. In our app, the views are html and css, with embedded ruby so that we can get content dynamically. For instance, a view may present to the viewer a images of all the items that are not yet sold, as well as a "buy now" button.
 Controllers pass the information from the model to the view, and also pass information back from the view (such as user input) to the model. So, for instance, for our view of the unsold items, the controller would get the information from the model, and may give the information an instance variable so that the view can easily access the data. Then, if a user purchased an item, the controller would let the model know that the database needs to be updated with sold == true.
 
 ### 9) Explain the different high-level components (abstractions) in your App.
 
+#### Models
+
 Our App has the following models:
 
-#### Item
+The `Item` accesses information from the item's table in our database. We have different queries to access all the items, items from an individual seller, as well as items from a particular category.
+
+The `Purchase` model gets information from the database about purchases. In particular we have functions to access information about purchases from a particular buyer, or information about the purchase of a particular item.
+
+The `User` model validates that the username is present and unique, and a function that gets the username from the database. It was generated as part of Devise, the gem for handling user logins.
+
+#### Controllers
+
+`application controller` has functions for the entire application. In this case, we have defined a function needed for the Devise gem to permit usernames.
+
+`buyer controller` is the section of our website about a user who buys an item. In this case it is getting information on the products a user has purchased.
+
+`homepage controller` is for getting information needed for our homepage. This is a separate controller because we could extend the home page in the future to add different features to the homepage, such as, perhaps, access to a user's selling stats if they have logged in. At this point in time we have a method that accesses the six most recent items.
+
+`items controller` - this controller supplies methods to give to the views around the items, as well as methods for destroying, creating and updating items.
+
+`purchases controller` is for purchasing an item. It has methods for a new purchase, a complete purchase, and also a receipt view. It also creates a new row in the purchases table when a new purchase has been made.
+
+`seller controller` - this controller is for the part of the website dedicated to a user who is a seller, and has methods to display sold items and the items for sale for a seller.
+
+##### Views
+
+`buyer folder` - for views associated with a user who is a buyer
+
+`devise folder` - views to do with user authentication, from the devise gem, such as log in and new user pages
+
+`homepage folder` - view for the homepage
+
+`items folder` - views associated with the items, such as creating a new item, and the items sorted by category
+
+`layouts folder` - the main template for a page in our application is here.
+
+`purchases folder` - this is for views do do with purchases - a new purchase, a complete purchase, for instance.
+
+`seller folder` - this folder is for views associated with a user as a seller, such as items a seller has for sale, and a list of items a seller has sold
+
+`shared folder` - in this template we have partial templates, for the menu on every page, a menu for a user, and a template that shows a list of items. 
 
 ### 10) Detail any third party services that your App will use.
 

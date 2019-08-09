@@ -10,6 +10,6 @@ class User < ApplicationRecord
   validates_uniqueness_of   :username
 
   def name
-   return username ? username : email
+   return username
  end
 end
