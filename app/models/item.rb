@@ -38,25 +38,9 @@ class Item < ApplicationRecord
     items = Item.where(seller_id: seller, sold: true).reverse_order
   end
 
-  # With the categories, we tried to have the category name as a parameter, but this caused an endless loop.
-
-  # showing the caterory toys
-  def self.all_toys
-    items = Item.where(category: "toys", sold: false).reverse_order
+  # method to show all the items in a particular category
+    def self.all_from_category(cat)
+    items = Item.where(category: cat, sold: false).reverse_order
   end
 
-  # showing the caterory books
-  def self.all_books
-    items = Item.where(category: "books", sold: false).reverse_order
-  end
-
-   # showing the caterory clothes
-   def self.all_clothes
-    items = Item.where(category: "clothes" ,sold: false).reverse_order
-  end
-
-  # showing the caterory accessories
-  def self.all_accessories
-    items = Item.where(category: "accessories" ,sold: false).reverse_order
-  end
 end

@@ -83,22 +83,22 @@ class ItemsController < ApplicationController
 
   # for view to display toys category
   def toys
-    @items = Item.all_toys
+    @items = Item.all_from_category("toys")
   end
 
   # for view to display books category
   def books
-    @items = Item.all_books
+    @items = Item.all_from_category("books")
   end
 
-  # for view to display the clohes category
+  # for view to display the clothes category
   def clothes
-    @items = Item.all_clothes
+    @items = Item.all_from_category("clothes")
   end
 
   # for view to display accessories category.
   def accessories
-    @items = Item.all_accessories
+    @items = Item.all_from_category("accessories")
   end
 
 end
