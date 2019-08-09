@@ -1,10 +1,15 @@
 class Item < ApplicationRecord
+
+  # an item belongs to a user, called a seller. An item will only have one purchase, and one photo attached
   belongs_to :seller, class_name: "User"
   has_one :purchase
   has_one_attached :photo
+
+  # enum for category and conditions means that we do not have to do extra validation on these fields
   enum category: [:toys, :books, :clothes, :accessories]
   enum condition: [:used, :brand_new]
 
+  # validation for a new item
   validates :title, presence: true, length: { maximum: 100 }
   validates :description, presence: true, length: { maximum: 250 }
   validates :price, numericality: true
@@ -32,6 +37,8 @@ class Item < ApplicationRecord
   def self.items_seller_has_sold(seller)
     items = Item.where(seller_id: seller, sold: true).reverse_order
   end
+
+  # With the categories, we tried to have the category name as a parameter, but this caused an endless loop.
 
   # showing the caterory toys
   def self.all_toys

@@ -1,4 +1,6 @@
 class PurchasesController < ApplicationController
+
+  # shopping cart - gets the item to be purchased and loads stripe information
   def new
     @item = Item.find(params[:id])
 
@@ -18,6 +20,7 @@ class PurchasesController < ApplicationController
     )
   end
 
+  # for view after an item is sold
   def complete
     #changes the item to sold
     @item = Item.find(params[:id])
@@ -35,6 +38,7 @@ class PurchasesController < ApplicationController
     end
   end
 
+  # similar view to the complete, but does not attempt to update the purchases table. 
   def receipt
     @item = Item.find(params[:id])
 

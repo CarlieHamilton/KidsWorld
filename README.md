@@ -313,7 +313,7 @@ The `User` model validates that the username is present and unique, and a functi
 
 `seller controller` - this controller is for the part of the website dedicated to a user who is a seller, and has methods to display sold items and the items for sale for a seller.
 
-##### Views
+#### Views
 
 `buyer folder` - for views associated with a user who is a buyer
 
@@ -615,4 +615,4 @@ When using production data in other environments like test and UAT, user's perso
 
 Privacy policy page (a future enhancement feature) which explains why our website collects personal information and what is done with it. For Example, the third-party service 'Stripe' may use the payment data for analysing consumer spending habits.
 
-Under GDPR legislation, users from Europe have the right to access any information that is being held about them, so one must be able to provide this information. They also have a right to erasure, so one must work out how their personal information can be destroyed if requested. 
+Under GDPR legislation, users from Europe have the right to access any information that is being held about them, so one must be able to provide this information. They also have a right to erasure, so one must work out how their personal information can be destroyed if requested.
