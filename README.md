@@ -569,36 +569,50 @@ In the future we would love to implement more of a test driven development, rath
 
 ### 21) Discuss and analyse requirements related to information system security.
 
+Answer combined with the following question.
+
+### 22) Discuss methods you will use to protect information and data.
+
 In creating a website such as this, one has many things to consider when it comes to information and security. Here are some of the things to consider:
 
 - Gathering user information (a user can log in and out)
 
-When a user registers, they 
+When a user registers, they are handing over sensitive information, such as their private email address that they do not want spammers to access, and their private password. We are using the Devise gem that provides some security for a user's information, such as storing the password in the database encrypted.
 
-* The user story - A user can buy an item
-    User is asked to enter the credit card data to buy an item. Industry standards require that we never store credit card details on our server. To avoid such sensitive data being stored on our servers we send the customer to 'Stripe' - a third-party service which takes care of this. Once the payment is done by entering the credit card data, stripe will redirect the customer’s browser back.
+In a future implementation, we could change logins to be through google or facebook, so that we do not have to save that information on our database. A trade off of this may be that we then wouldn't have as much access to our user data if we needed this for our own analysis of our users.
 
-### 22) Discuss methods you will use to protect information and data.
+- A user purchases items with a credit card
 
-'Devise' gem - protects and securely stores email and the encrypted password.
-'Stripe' - Handles senstitive data.
-More details in Question# 21.
+User is asked to enter the credit card data to buy an item. Industry standards require that we never store credit card details on our server. To avoid such sensitive data being stored on our servers we send the customer to 'Stripe' - a third-party service which takes care of this. Once the payment is done by entering the credit card data, stripe will redirect the customer’s browser back.
+
+- Users contacting each other
+
+At the moment to facilitate a transaction to be completed, a buyer and a seller are given each other's contact information - their email addresses. This could cause problems handing out people's email addresses, even if only a logged in user who has bought or sold a product can see it. In a future implementation of the app, a messaging system could be set up so that users can contact each other without having to see each other's private email address.
+
+- Users can sell postage and post out sold items
+
+As part of a future enhancement, providing postage as part of the integration of the website seems likely. This means that the website will be handling sensitive information such as a user's physical address, and steps would be needed to make sure that information in the database was secure, as well as that when that information was displayed to a customer, the displayed page is secure to only the seller in order to ship out the product.
+
+- Keeping gems and websites up to date
+
+Many successful internet hacks are due to websites not having their software up to date, and security flaws have been discovered. In order to make the website less vulnerable to attacks, we would have to make sure that our gems, rails and ruby versions were updated to the latest stable versions, and that all code if found to be vulnerable was updated asap.
 
 ### 23) Research what your legal obligations are in relation to handling user data.
 
-* Personal information that are collected by our website are the user’s:
-    name
-    email-id
-    password
-* User's personal information should not be shared with third parties like Google or Facebook.
-* User's personal information should be stored in a database and access to this database is strictly controlled by              authentication and authorization.
-* When using production data in other environments like test and UAT, user's personal information like name, email-id etc are   masked so that user cannot be identified.
-* Privacy policy page (a future enhancement feature) which explains why our website collects personal information and what is done with it. For Example, the third-party service 'Stripe' may use the payment data for analysing consumer spending habits.
-* Take reasonable steps to destroy or de-identify personal information when it is no longer needed.
-* As our website requires the user to sign-in to create a listing or to purchase an item, we are obliged to:
-    ** Protect personal information from:
-        theft
-        misuse
-        loss
-        unauthorised access
-        modification
+In Australia, under the Privacy Act of 1988, we are required to protect personal information from:
+- theft
+- misuse
+- loss
+- unauthorised access
+- modification
+- disclosure
+
+As well as this, we must take reasonable steps to destroy or de-identify personal information when it is no longer needed.
+
+A user's information should not used in any way that a user has not authorized it to be used, so for instance it should not be shared or sold to a third party. This data should also be stored in a database and access to this database is strictly controlled by authentication and authorization. Sensitive information such as passwords and credit card information should be encrypted.
+
+When using production data in other environments like test and UAT, user's personal information like name, email-id etc are   masked so that user cannot be identified.
+
+Privacy policy page (a future enhancement feature) which explains why our website collects personal information and what is done with it. For Example, the third-party service 'Stripe' may use the payment data for analysing consumer spending habits.
+
+Under GDPR legislation, users from Europe have the right to access any information that is being held about them, so one must be able to provide this information. They also have a right to erasure, so one must work out how their personal information can be destroyed if requested. 
