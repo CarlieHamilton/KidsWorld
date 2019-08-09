@@ -14,7 +14,7 @@
         </p>
         <p><%= link_to item.title, item_path(item) %></p>
         <p><%= number_to_currency(item.price)%></p>
-        <p><%= link_to 'Buy Now', new_purchase_path(id: item.id), class: "button is-primary" %></p>
+        <p><%= link_to 'Buy Now', new_purchase_path(id: item.id), class: "button is-primary", data: { turbolinks: false }%></p>
     </div>
 <% end%>
 </div>

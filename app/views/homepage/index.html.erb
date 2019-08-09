@@ -2,18 +2,7 @@
 <p class="subtitle has-text-centered">Buy and sell your kid's old stuff</p>
 
 <h2 class="title is-small">Latest items for sale</h2>
-<div class ="items">
-<% @items.each do |item| %>
-    <div class="item-div">
-        <% if item.photo.attachment %>
-            <p><%= link_to image_tag(item.photo, class: "items-image"), item_path(item)%></p>
-        <%end%>
 
-        <p><%= link_to item.title, item_path(item) %></p>
-        <p><%= number_to_currency(item.price)%></p>
-        <p><%= link_to 'Buy Now', new_purchase_path(id: item.id), class: "button is-primary" %></p>
-    </div>
-<% end%>
-</div>
+ <%= render "shared/displayitems"%>
 
 <%= link_to 'More', items_path, class: "button is-link is-pulled-right" %>

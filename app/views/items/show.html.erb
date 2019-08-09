@@ -23,7 +23,7 @@
                     <%= link_to "Edit", edit_item_path(id: @item.id), class: "button is-link" %>
                     <%= link_to "Delete", @item, method: "delete", class: "button is-danger" %>
                 <%else%>
-                    <p><%= link_to 'Buy Now', new_purchase_path(id: @item.id), class: "button is-primary" %></p>
+                    <p><%= link_to 'Buy Now', new_purchase_path(id: @item.id), class: "button is-primary", data: { turbolinks: false } %></p>
                 <% end %>
             <% end %>
         <%else%>

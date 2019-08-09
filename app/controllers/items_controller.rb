@@ -1,10 +1,15 @@
 class ItemsController < ApplicationController
+
+  # user must be authenticated before they can access these pages
   before_action :authenticate_user!, only: [:new, :create, :destroy]
 
+  # items index view displays all unsold items
+  # in a future enhancement, would like to have pagination so that not all items are on the one page
   def index
     @items = Item.all_items_unsold
   end
 
+  # show view displays information for a single item
   def show
     @item = Item.find(params[:id])
     if @item.sold
@@ -12,10 +17,12 @@ class ItemsController < ApplicationController
     end
   end
 
+  # for the view that creates a new item
   def new
     @item = Item.new
   end
 
+  # saving a new item
   def create
     item = Item.new
     item.seller_id = current_user.id
@@ -35,10 +42,12 @@ class ItemsController < ApplicationController
     end
   end
 
+  # for edit view, editing an item, finds the correct item to edit
   def edit
     @item = Item.find(params[:id])
   end
 
+  # method for updating an edited item
   def update
     item = Item.find(params[:id])
     item.title = params[:item][:title]
@@ -59,6 +68,7 @@ class ItemsController < ApplicationController
     end
   end
 
+  # method for deleting an item
   def destroy
     item = Item.find(params[:id])
     if item.seller_id == current_user.id
@@ -71,20 +81,24 @@ class ItemsController < ApplicationController
     end
   end
 
+  # for view to display toys category
   def toys
-    @items = Item.all_toys
+    @items = Item.all_from_category("toys")
   end
 
+  # for view to display books category
   def books
-    @items = Item.all_books
+    @items = Item.all_from_category("books")
   end
 
+  # for view to display the clothes category
   def clothes
-    @items = Item.all_clothes
+    @items = Item.all_from_category("clothes")
   end
 
+  # for view to display accessories category.
   def accessories
-    @items = Item.all_accessories
+    @items = Item.all_from_category("accessories")
   end
 
 end

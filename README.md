@@ -84,7 +84,9 @@ Our tech stack includes:
 - `rails s` to run the server
 
 ## Design documentation
-- Design process - on paper
+
+Our design process is expanded on more below, and includes:
+- Brainstorming in person and in slack
 - ERD
 - Wireframe
 - User Stories in Trello board
@@ -94,15 +96,16 @@ Our tech stack includes:
 We created a list of user stories that we needed to complete for our MVP, as well as user stories as stretch goals. They are as follows:
 
 - A user can view all items available for sale
-    Sold items would not be viewable so that they do not confuse the buyer. A user would not have to be logged in to see all the items.
+
+    - Sold items would not be viewable so that they do not confuse the buyer. A user would not have to be logged in to see all the items.
 
 - A user can buy an item
 
 - A user can sell an item (create a listing)
-    A user can only create a listing if they are signed in.
+    - A user can only create a listing if they are signed in.
 
 - A user can edit and delete a listing
-    A user would only be able to edit and delete their own listings and if they are signed in.
+    - A user would only be able to edit and delete their own listings and if they are signed in.
 
 - A user can upload an image to their listing
 
@@ -111,19 +114,19 @@ We created a list of user stories that we needed to complete for our MVP, as wel
 - A user can view the details of an individual item
 
 - A user can see a list of their past purchases (stretch goal)
-    Goal completed. A user can view their past purchases. We implemented a Purchases model to record who purchased what item.
+    - Goal completed. A user can view their past purchases. We implemented a Purchases model to record who purchased what item.
 
 - A user can see a list of their sold items (stretch goal)
-    Goal completed. A user can see their sold items, who purchased them, and the person's contact email
+    - Goal completed. A user can see their sold items, who purchased them, and the person's contact email
 
 - A user can sort all the listings (by price, most recent, by category -- stretch goal)
-    We have implemented being able to select a category, as a part of our main menu. Sorting by most recent is the default view. In the future we would implement being able to sort by price, and other ways of sorting.
+    - We have implemented being able to select a category, as a part of our main menu. Sorting by most recent is the default view. In the future we would implement being able to sort by price, and other ways of sorting.
 
 - A user can message another user (stretch goal)
-    We envision this will be so that users can contact other users through the website to organise pickup or delivery. At the moment, users get access to the person's email address which is not ideal.
+    - We envision this will be so that users can contact other users through the website to organise pickup or delivery. At the moment, users get access to the person's email address which is not ideal.
 
 - A user can sell postage for an item (stretch goal)
-    For this we would need to implement a new model that stores a user's address, as well as perhaps a postage model that has the different postage rates for items (this could possibly exist as a gem). In the item model we may need to include a place where a user inputs the weight of an item. There may also be a boolean for if the user wants to send and item or it to be pickup/delivery only (such as, if the item is too large to easily send). Postage would then have to be added to every order, and when the order is complete the seller would have access to the buyer's postage address.
+    - For this we would need to implement a new model that stores a user's address, as well as perhaps a postage model that has the different postage rates for items (this could possibly exist as a gem). In the item model we may need to include a place where a user inputs the weight of an item. There may also be a boolean for if the user wants to send and item or it to be pickup/delivery only (such as, if the item is too large to easily send). Postage would then have to be added to every order, and when the order is complete the seller would have access to the buyer's postage address.
 
 ## A workflow diagram of the user journey/s
 
@@ -223,6 +226,8 @@ web.1: idle 2019/08/06 10:49:11 +1000 (~ 3h ago)`
 
 Heroku automatically routes HTTP requests sent to your website to your web dynos. Routers use an algorithm to randomly spread HTTP requests across the web dynos. When heroku receives a HTTP request, the router establishes a new TCP connection to a random web dyno.
 
+Heroku uses a postgresql database.
+
 ### 5) Identify and describe the software to be used in your App.
 
 The different softwares used in our website are:
@@ -240,8 +245,10 @@ Our website is created on the Ruby on Rails MVC framework which is an architectu
 * Cloudinary - A third-party cloud-based service used for image and video management solution. It enables users to upload, store, manage, manipulate and deliver images and video for websites and apps. In our website, we used this solution to store and manage images of the items the seller would like to sell.
 
 * Stripe - A third-party service which allows individuals and businesses to make and receive payments over the Internet. In our website, we have a "Checkout Now" button with each item listed. When this button is clicked, the browser redirects to stripe where credit card data is handled. Once the payment is done by entering the credit card data, stripe will redirect the customer’s browser back.
+    * We utilized some javascript to make the checkout redirect correctly to stripe.
 
 * Heroku - A third-party cloud platform service where websites can be deployed. To deploy our website, we used Heroku's Git server which handles the application repository pushes.
+
 More information can be found in Question# 10.
 
 ### 6) Identify the database to be used in your App and provide a justification for your choice
@@ -250,7 +257,7 @@ The database used in this app is postgresql. Postgres is an open source relation
 
 When considering what database to use for this project, we ultimately chose postgres. One main advantage of using postgres is that it is natively supported with Heroku, our deployment platform.
 
-In general, there are many advantagesto using a postgres database. One advantage for us is the relational nature of the database, which helped with how we set up our ERD. This kind of database is good for transactional applications, another reason why it is a good fit for our project.
+In general, there are many advantages to using a postgres database. One advantage for us is the relational nature of the database, which helped with how we set up our ERD. This kind of database is good for transactional applications, another reason why it is a good fit for our project.
 
 Being an open source database means that there would be many resources online to help us if we ran into any problems.
 
@@ -264,14 +271,65 @@ With the only real disadvantage being that it can have slower performance on lar
 
 ### 7) Identify and describe the production database setup (i.e. postgres instance).
 
-Heroku runs its own postgresql server instance. The database needs to be setup to run in the heroku (production) environment.
+Heroku runs its own postgresql  Pserver instance. The database needs to be setup to run in the heroku (production) environment.
 To set up the database, the following steps were followed:
-    * To create our tables from the db/schema.rb file - `heroku run rails db:schema:load`
-    * To update the changes made to the database structure (tables, columns) once changes where made after deploying to production - `heroku run rails db:migrate`
-    * To seed any data we need in production - `heroku run rails db:seed`
+* To create our tables from the db/schema.rb file - `heroku run rails db:schema:load`
+* To update the changes made to the database structure (tables, columns) once changes where made after deploying to production - `heroku run rails db:migrate`
+* To seed any data we need in production - `heroku run rails db:seed`
 
-# 8) Describe the architecture of your App.
-# 9) Explain the different high-level components (abstractions) in your App.
+### 8) Describe the architecture of your App.
+
+Our app is structured in the MVC - model, views, controller - architectural pattern.
+
+Models interact with the database, accessing the required information from there. For instance, a function within the Item model may get all the items from the database where sold == false.
+
+Views are the information that is presented to the viewer. In our app, the views are html and css, with embedded ruby so that we can get content dynamically. For instance, a view may present to the viewer a images of all the items that are not yet sold, as well as a "buy now" button.
+
+Controllers pass the information from the model to the view, and also pass information back from the view (such as user input) to the model. So, for instance, for our view of the unsold items, the controller would get the information from the model, and may give the information an instance variable so that the view can easily access the data. Then, if a user purchased an item, the controller would let the model know that the database needs to be updated with sold == true.
+
+### 9) Explain the different high-level components (abstractions) in your App.
+
+#### Models
+
+Our App has the following models:
+
+The `Item` accesses information from the item's table in our database. We have different queries to access all the items, items from an individual seller, as well as items from a particular category.
+
+The `Purchase` model gets information from the database about purchases. In particular we have functions to access information about purchases from a particular buyer, or information about the purchase of a particular item.
+
+The `User` model validates that the username is present and unique, and a function that gets the username from the database. It was generated as part of Devise, the gem for handling user logins.
+
+#### Controllers
+
+`application controller` has functions for the entire application. In this case, we have defined a function needed for the Devise gem to permit usernames.
+
+`buyer controller` is the section of our website about a user who buys an item. In this case it is getting information on the products a user has purchased.
+
+`homepage controller` is for getting information needed for our homepage. This is a separate controller because we could extend the home page in the future to add different features to the homepage, such as, perhaps, access to a user's selling stats if they have logged in. At this point in time we have a method that accesses the six most recent items.
+
+`items controller` - this controller supplies methods to give to the views around the items, as well as methods for destroying, creating and updating items.
+
+`purchases controller` is for purchasing an item. It has methods for a new purchase, a complete purchase, and also a receipt view. It also creates a new row in the purchases table when a new purchase has been made.
+
+`seller controller` - this controller is for the part of the website dedicated to a user who is a seller, and has methods to display sold items and the items for sale for a seller.
+
+#### Views
+
+`buyer folder` - for views associated with a user who is a buyer
+
+`devise folder` - views to do with user authentication, from the devise gem, such as log in and new user pages
+
+`homepage folder` - view for the homepage
+
+`items folder` - views associated with the items, such as creating a new item, and the items sorted by category
+
+`layouts folder` - the main template for a page in our application is here.
+
+`purchases folder` - this is for views do do with purchases - a new purchase, a complete purchase, for instance.
+
+`seller folder` - this folder is for views associated with a user as a seller, such as items a seller has for sale, and a list of items a seller has sold
+
+`shared folder` - in this template we have partial templates, for the menu on every page, a menu for a user, and a template that shows a list of items.
 
 ### 10) Detail any third party services that your App will use.
 
@@ -293,9 +351,9 @@ Industry standards require that we never store credit card details on our server
 * To set the master key - `heroku config:set RAILS_MASTER_KEY=<master-key>`
 * To push to the heroku repo - `git push heroku master`
 * To set up the database, the following steps were followed:
-    ** To create our tables from the db/schema.rb file - `heroku run rails db:schema:load`
-    ** To update the changes made to the database structure (tables, columns) once changes where made after deploying to production - `heroku run rails db:migrate`
-    ** To seed any data we need in production - `heroku run rails db:seed`
+    * To create our tables from the db/schema.rb file - `heroku run rails db:schema:load`
+    * To update the changes made to the database structure (tables, columns) once changes where made after deploying to production - `heroku run rails db:migrate`
+    * To seed any data we need in production - `heroku run rails db:seed`
 * To open the website in heroku - `heroku open`.
   The webpage https://kidsworld.herokuapp.com/ opens up in the browser.
 
@@ -304,6 +362,7 @@ Industry standards require that we never store credit card details on our server
 Our website's data structure is similar to that of Etsy.
 
 Etsy has tools for the sellers to allow them to represent their inventory more accurately in their listings, giving them more control over how they set their prices and manage their stock. It also allow sellers to describe their items in ways that have a consistent meaning to buyers. For example, the seller can mention the category, size etc so that buyers can search for an item based on the filters.
+
 Our website allows sellers to advertise their inventory based on the category etc so that buyers can browse through the categories in our website to find a particular item. We would like to implement a search functionality for our website as a future enhancement so that buyers can search for a particular item.
 
 ### 12) Discuss the database relations to be implemented.
@@ -336,7 +395,7 @@ For our User model, we have the following schema design:
 
 ```
 email: string, default: "", null: false
-username: string
+username: string, null: false
 encrypted_password: string, default: "", null: false
 reset_password_token: string
 reset_password_sent_at: datetime
@@ -347,13 +406,13 @@ updated_at: datetime, null: false
 ["reset_password_token"]: index, name: "index_users_on_reset_password_token", unique: true
 ```
 
-The User model was generated by Devise, a gem, and we added the Username column, as a string. The username NEEDS TO BE NOT NULL
+The User model was generated by Devise, a gem, and we added the Username column, as a string. We made it required so that a user must sign up with one. We use the username all throughout the store, so it must be added.
 
 The Items model schema:
 ```
-"seller_id": bigint
-"title": string, limit: 100
-"description": string, limit: 250
+"seller_id": bigint, null: false
+"title": string, limit: 100, null: false
+"description": string, limit: 250, null:false
 "condition": integer
 "category": interger
 "sold": boolean, default: false
@@ -366,21 +425,23 @@ The Items model schema:
 Of note, our condition and category columns are integers. That as because they are then defined as a enumerable (enum) in our Item model.
 We also have set price as a decimal with precision as 8 (total 8 digits), and the scale as 2 (two decimals places).
 
-We decided that the core pieces of required information would be the Title and Price. All other sections are not required to make a new item.
+We decided that the core pieces of required information would be the Title and Price. All other sections are not required to make a new item. The seller_id should automatically be added, but we required it so that a new record could not be made without one.
+
+Title and Description have limits to the amount of characters in order to fit with the expected results of what we want users to input. We did not want users to put in a super long title, but it would be acceptable for a description.
 
 The Sold column is a boolean, that defaults to false. This way, when a new item is created the user doesn't choose if it is sold or not, it is created as false. When the item is sold, it is changed to true.
 
 
 And the Purchases model schema:
 ```
-"buyer_id": bigint
-"item_id": bigint
+"buyer_id": bigint, null: false
+"item_id": bigint, null: false
 "created_at": datetime, null: false
 "updated_at": datetime, null: false
 ["buyer_id"]: index, name: "index_purchases_on_buyer_id"
 ["item_id"]: index, name: "index_purchases_on_item_id"
 ```
-The Purchases table references the Item and User table.
+The Purchases table references the Item and User table. We wouldn't expect buyer_id and item_id to be empty, so we made the restraint to be null: false.
 
 Our foreign keys in the schema are as follows for these models:
 ```
@@ -476,7 +537,16 @@ We deployed early and often to Heroku, changing our requirements for the project
 ### 19) Provide an overview and description of your Source control process.
 
 Source control is the process of tracking code changes, able to view the revision history of the code, and be able to rollback to previous versions when needed.
-The source code management system that we used is Git. We created a git repository for our app. We have the master branch and created feature branches using the command 'git checkout -b branch-name' to work on our code independently. Once we have finished our code changes on a particular branch, we used the commands 'git add' and 'git commit' to store our changes locally. We then used 'git push origin branch-name' to push our local changes to the feature branch in the git repository. The other teammate could then pull down the branch using a pull request, review and test the code change, then accept/decline the changes, leave comments and push/merge it to the master branch if everything works fine. We have faced some merge conflicts and figured out what changes needs to be accpeted and have resolved the conflicts. We have worked independently on feature branches and have done frequent commits to the master so that its easy to manage and does not break the functionality.
+
+The source code management system that we used is Git. We created a git repository for our app. We used a feature branch workflow for our source control process.
+
+ We have the master branch and created feature branches using the command 'git checkout -b branch-name' to work on our code independently.
+
+ Once we have finished our code changes on a particular branch, we used the commands 'git add' and 'git commit' to store our changes locally. We then used 'git push origin branch-name' to push our local changes to the feature branch in the git repository.
+
+ The other teammate could then pull down the branch using a pull request, review and test the code change, then accept/decline the changes, leave comments and push/merge it to the master branch if everything works fine.
+
+ We have faced some merge conflicts and figured out what changes needs to be accpeted and have resolved the conflicts. We have worked independently on feature branches and have done frequent commits to the master so that its easy to manage and does not break the functionality.
 
 
 ### 20) Provide an overview and description of your Testing process
@@ -499,33 +569,50 @@ In the future we would love to implement more of a test driven development, rath
 
 ### 21) Discuss and analyse requirements related to information system security.
 
-* The user story - A user can log in and out
-    User data is at risk when user is asked to register using email-id and password. 'Devise' gem takes care of this by securely storing the email and the encrypted password.
-
-* The user story - A user can buy an item
-    User is asked to enter the credit card data to buy an item. Industry standards require that we never store credit card details on our server. To avoid such sensitive data being stored on our servers we send the customer to 'Stripe' - a third-party service which takes care of this. Once the payment is done by entering the credit card data, stripe will redirect the customer’s browser back.
+Answer combined with the following question.
 
 ### 22) Discuss methods you will use to protect information and data.
 
-'Devise' gem - protects and securely stores email and the encrypted password.
-'Stripe' - Handles senstitive data.
-More details in Question# 21.
+In creating a website such as this, one has many things to consider when it comes to information and security. Here are some of the things to consider:
+
+- Gathering user information (a user can log in and out)
+
+When a user registers, they are handing over sensitive information, such as their private email address that they do not want spammers to access, and their private password. We are using the Devise gem that provides some security for a user's information, such as storing the password in the database encrypted.
+
+In a future implementation, we could change logins to be through google or facebook, so that we do not have to save that information on our database. A trade off of this may be that we then wouldn't have as much access to our user data if we needed this for our own analysis of our users.
+
+- A user purchases items with a credit card
+
+User is asked to enter the credit card data to buy an item. Industry standards require that we never store credit card details on our server. To avoid such sensitive data being stored on our servers we send the customer to 'Stripe' - a third-party service which takes care of this. Once the payment is done by entering the credit card data, stripe will redirect the customer’s browser back.
+
+- Users contacting each other
+
+At the moment to facilitate a transaction to be completed, a buyer and a seller are given each other's contact information - their email addresses. This could cause problems handing out people's email addresses, even if only a logged in user who has bought or sold a product can see it. In a future implementation of the app, a messaging system could be set up so that users can contact each other without having to see each other's private email address.
+
+- Users can sell postage and post out sold items
+
+As part of a future enhancement, providing postage as part of the integration of the website seems likely. This means that the website will be handling sensitive information such as a user's physical address, and steps would be needed to make sure that information in the database was secure, as well as that when that information was displayed to a customer, the displayed page is secure to only the seller in order to ship out the product.
+
+- Keeping gems and websites up to date
+
+Many successful internet hacks are due to websites not having their software up to date, and security flaws have been discovered. In order to make the website less vulnerable to attacks, we would have to make sure that our gems, rails and ruby versions were updated to the latest stable versions, and that all code if found to be vulnerable was updated asap.
 
 ### 23) Research what your legal obligations are in relation to handling user data.
 
-* Personal information that are collected by our website are the user’s:
-    name
-    email-id
-    password
-* User's personal information should not be shared with third parties like Google or Facebook.
-* User's personal information should be stored in a database and access to this database is strictly controlled by              authentication and authorization.
-* When using production data in other environments like test and UAT, user's personal information like name, email-id etc are   masked so that user cannot be identified.
-* Privacy policy page (a future enhancement feature) which explains why our website collects personal information and what is done with it. For Example, the third-party service 'Stripe' may use the payment data for analysing consumer spending habits.
-* Take reasonable steps to destroy or de-identify personal information when it is no longer needed.
-* As our website requires the user to sign-in to create a listing or to purchase an item, we are obliged to:
-    ** Protect personal information from:
-        theft
-        misuse
-        loss
-        unauthorised access
-        modification
+In Australia, under the Privacy Act of 1988, we are required to protect personal information from:
+- theft
+- misuse
+- loss
+- unauthorised access
+- modification
+- disclosure
+
+As well as this, we must take reasonable steps to destroy or de-identify personal information when it is no longer needed.
+
+A user's information should not used in any way that a user has not authorized it to be used, so for instance it should not be shared or sold to a third party. This data should also be stored in a database and access to this database is strictly controlled by authentication and authorization. Sensitive information such as passwords and credit card information should be encrypted.
+
+When using production data in other environments like test and UAT, user's personal information like name, email-id etc are   masked so that user cannot be identified.
+
+Privacy policy page (a future enhancement feature) which explains why our website collects personal information and what is done with it. For Example, the third-party service 'Stripe' may use the payment data for analysing consumer spending habits.
+
+Under GDPR legislation, users from Europe have the right to access any information that is being held about them, so one must be able to provide this information. They also have a right to erasure, so one must work out how their personal information can be destroyed if requested.
