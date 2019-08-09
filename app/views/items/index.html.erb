@@ -1,22 +1,3 @@
 <h2 class="title has-text-centered">All Items</h2>
 
-<div class ="items">
-    <% @items.each do |item| %>
-        <div class="item-div">
-            <p>
-            <% if item.photo.attachment %>
-            <%= link_to image_tag(item.photo, class: "items-image"), item_path(item)%>
-            <%end%>
-            </p>
-            <p><%= link_to item.title, item_path(item) %></p>
-            <p><%= number_to_currency(item.price)%></p>
-            <p><%= link_to 'Buy Now', new_purchase_path(id: item.id), class: "button is-primary" %></p>
-        </div>
-    <% end%>
-</div>
-
-
-
-
-
-
+ <%= render "shared/displayitems"%>
