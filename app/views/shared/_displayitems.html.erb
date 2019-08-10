@@ -1,4 +1,5 @@
 <div class ="items">
+<% if @items%>
 <% @items.each do |item| %>
         <div class="item-div">
             <% if item.photo.attachment %>
@@ -8,5 +9,8 @@
             <p><%= number_to_currency(item.price)%></p>
             <p><%= link_to 'Buy Now', new_purchase_path(id: item.id), class: "button is-primary", data: { turbolinks: false } %></p>
         </div>
+<%end%>
+<%else%>
+<p>Currently no items</p>
 <%end%>
 </div>
