@@ -1,16 +1,16 @@
 <div class ="items">
-<% if @items%>
-<% @items.each do |item| %>
-        <div class="item-div">
-            <% if item.photo.attachment %>
-                <p><%= link_to image_tag(item.photo, class: "items-image"), item_path(item)%></p>
-            <%end%>
-            <p><%= link_to item.title, item_path(item) %></p>
-            <p><%= number_to_currency(item.price)%></p>
-            <p><%= link_to 'Buy Now', new_purchase_path(id: item.id), class: "button is-primary", data: { turbolinks: false } %></p>
-        </div>
-<%end%>
+<% if @items.length > 0 %>
+    <% @items.each do |item| %>
+            <div class="item-div">
+                <% if item.photo.attachment %>
+                    <p><%= link_to image_tag(item.photo, class: "items-image"), item_path(item)%></p>
+                <%end%>
+                <p><%= link_to item.title, item_path(item) %></p>
+                <p><%= number_to_currency(item.price)%></p>
+                <p><%= link_to 'Buy Now', new_purchase_path(id: item.id), class: "button is-primary", data: { turbolinks: false } %></p>
+            </div>
+    <%end%>
 <%else%>
-<p>Currently no items</p>
+<p>Currently no items!</p>
 <%end%>
 </div>
