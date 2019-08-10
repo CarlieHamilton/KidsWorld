@@ -24,14 +24,10 @@ class ItemsController < ApplicationController
 
   # saving a new item
   def create
-    item = Item.new
+    item = Item.new(item_params)
     item.seller_id = current_user.id
-    item.title = params[:item][:title]
-    item.description = params[:item][:description]
     item.condition = params[:condition]
     item.category = params[:category]
-    item.price = params[:item][:price]
-    item.photo.attach(params[:item][:photo])
 
     if item.save
         flash[:notice] = "Your item has been saved!"
@@ -50,14 +46,14 @@ class ItemsController < ApplicationController
   # method for updating an edited item
   def update
     item = Item.find(params[:id])
-    item.title = params[:item][:title]
-    item.description = params[:item][:description]
+    item.update_attributes!(item_params)
     item.condition = params[:condition]
     item.category = params[:category]
-    item.price = params[:item][:price]
-    if params[:item].has_key? :photo
-        item.photo.attach(params[:item][:photo])
-    end
+
+    # this code no longer needed as item_params works instead, saving for future reference
+    # if params[:item].has_key? :photo
+    #     item.photo.attach(params[:item][:photo])
+    # end
 
     if item.save
         flash[:notice] = "Your item has been saved!"
@@ -99,6 +95,12 @@ class ItemsController < ApplicationController
   # for view to display accessories category.
   def accessories
     @items = Item.all_from_category("accessories")
+  end
+
+  private
+  # private method for permited perams - makes update and create tidier too
+  def item_params
+    params.require(:item).permit(:title, :description, :price, :photo)
   end
 
 end
