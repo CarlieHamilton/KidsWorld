@@ -54,7 +54,7 @@ b2.photo.attach(io: File.open('app/assets/images/books/2.jpg'), filename: '2.jpg
 b3 = Item.create(seller_id: user3.id, title: "Speaking English", description: "Helps in increasing the vocabulary", condition: :used, category: :books, sold: false, price: 3.50)
 b3.photo.attach(io: File.open('app/assets/images/books/3.jpg'), filename: '3.jpg')
 
-b4 = Item.create(seller_id: user1.id, title: "Princess Kate Meditates", description: "Girl's favourite", condition: :brand_new, category: :books, sold: false, price: 5.65)
+b4 = Item.create(seller_id: user1.id, title: "Princess Kate Meditates", description: "A kid's favourite", condition: :brand_new, category: :books, sold: false, price: 5.65)
 b4.photo.attach(io: File.open('app/assets/images/books/4.jpg'), filename: '4.jpg')
 
 b5 = Item.create(seller_id: user3.id, title: "Little Children's book of things to do", description: "Best to engage a child to do things", condition: :brand_new, category: :books, sold: false, price: 2.75)

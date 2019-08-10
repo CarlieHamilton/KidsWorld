@@ -77,19 +77,52 @@ Our tech stack includes:
 - bundle install
 - update `config/database.yml` with your postgresql username & password
 - update `config/credentials.yml` with your cloudinary api key. In order to decrypt the file to edit, type
-    ```EDITOR='code --wait' rails credentials:edit``` into your command line.
+    ```EDITOR='code --wait' rails credentials:edit```
+    into your command line.
 - add your stripe api key to `app/controllers/purchases_controller.rb`
-- `rails db:schema:load`
-- `rails db:seed`
+- `rails db:setup` - setup the database
+- `rails db:schema:load` - load the schema for the database
+- `rails db:seed` - load the items into the database
 - `rails s` to run the server
+
+The default server is located at http://localhost:3000/
+
+### Sign Up, Log in and Log out of Accounts
+
+On the top right side of the menu you can log in and out or sign up for an account. You do not need to be logged in to browse the website, but you will need an account to buy and/or sell an item.
+To sign up, all fields are required, including username, email and password. A username must be unique. A password requires six characters.
+
+### Browsing the Website
+
+The left side of the menu has links to the categories and the homepage. You can browse through all the items or by category. You can click on an item's picture or title to access the individual item's page with additional information. You can also click on a seller's name to view all the items for sale by that particular seller.
+
+### Purchasing an Item
+
+If you try to purchase an item without being logged in, you are redirected to the login page.
+
+To purchase an item, click on the "buy now" button. You will be redirected to a checkout page, to confirm you purchase. Click "checkout now" to purchase the item through Stripe. Upon completion of your purchase, you will be redirected to the completed purchase page.
+
+### Selling an Item
+
+When you are logged in, you can see a "Sell a New Item" button in the top menu. Click this to create a new item. Fill out the form - the title and price are the two required fields, but all are recommended. Click "submit" to add the item for sale.
+
+### Editing and Deleting an Item
+
+To edit or delete an item, first it must be an item created by the user that is currently logged in. To edit or delete an item, navigate to the individual item's page, and you will be able to access the "edit" and "delete" buttons.
+
+### User Menu
+
+When you click on a seller's username, you will be redirected to the seller's store with all the seller's items. If this is the current user that is logged in, you will have an extra menu that can access all your items currently for sale, your items that have been sold, and the items you have bought.
 
 ## Design documentation
 
-Our design process is expanded on more below, and includes:
-- Brainstorming in person and in slack
-- ERD
-- Wireframe
-- User Stories in Trello board
+Our design process included:
+
+- Brainstorm ideas
+- Created project timeline, breakdown of important tasks and user stories, and put them into our trello board.
+- Designed our ERD
+- Designed our wireframes
+- Built the app, and refined our plans as we went along
 
 ## User stories
 
@@ -185,17 +218,17 @@ Day 5 - July 30th Trello Board
 Day 6 - July 31st Trello Board
 ![Trello 31st July](docs/Screenshot-31July.png)
 
-Day 7 - Augast 05th Trello Board
-![Trello 05th Augast](docs/Screenshot-05Aug.png)
+Day 7 - August 05th Trello Board
+![Trello 05th August](docs/Screenshot-05Aug.png)
 
-Day 8 - Augast 06th Trello Board
-![Trello 06th Augast](docs/Screenshot-06Aug.png)
+Day 8 - August 06th Trello Board
+![Trello 06th August](docs/Screenshot-06Aug.png)
 
-Day 9 - Augast 07th Trello Board
-![Trello 07th Augast](docs/Screenshot-07Aug.png)
+Day 9 - August 07th Trello Board
+![Trello 07th August](docs/Screenshot-07Aug.png)
 
 Final Trello Board
-![Completed]()
+![Completed](docs/trellofinal.png)
 
 ## Short Answer Questions
 
@@ -249,6 +282,8 @@ Our website is created on the Ruby on Rails MVC framework which is an architectu
 
 * Heroku - A third-party cloud platform service where websites can be deployed. To deploy our website, we used Heroku's Git server which handles the application repository pushes.
 
+* Rspec - A ruby gem for unit testing
+
 More information can be found in Question# 10.
 
 ### 6) Identify the database to be used in your App and provide a justification for your choice
@@ -271,7 +306,7 @@ With the only real disadvantage being that it can have slower performance on lar
 
 ### 7) Identify and describe the production database setup (i.e. postgres instance).
 
-Heroku runs its own postgresql  Pserver instance. The database needs to be setup to run in the heroku (production) environment.
+Heroku runs its own postgresql server instance. The database needs to be setup to run in the heroku (production) environment.
 To set up the database, the following steps were followed:
 * To create our tables from the db/schema.rb file - `heroku run rails db:schema:load`
 * To update the changes made to the database structure (tables, columns) once changes where made after deploying to production - `heroku run rails db:migrate`
@@ -520,6 +555,8 @@ Our main columns for the Trello board were as follows:
 
 Each day we worked on a daily sprint with a goal of what we wanted to complete. We talked together on what each wanted to do in order to meet our daily goal, and tasks were then allocated to each team member. Some tasks we worked together in pair programming, other times we worked individually on a task.
 
+We utilized some labels in our trello board, such as Purple for future enhancements, and green for documentation.
+
 ### 18) Discuss how Agile methodology is being implemented in your project.
 
 Although we were only a team of two, we implemented numerous agile methodologies in our workflow.
@@ -584,6 +621,10 @@ In a future implementation, we could change logins to be through google or faceb
 - A user purchases items with a credit card
 
 User is asked to enter the credit card data to buy an item. Industry standards require that we never store credit card details on our server. To avoid such sensitive data being stored on our servers we send the customer to 'Stripe' - a third-party service which takes care of this. Once the payment is done by entering the credit card data, stripe will redirect the customer’s browser back.
+
+- Users can edit and delete listings
+
+Checks are in place so that only a user that created the item can edit or delete that item. 
 
 - Users contacting each other
 
